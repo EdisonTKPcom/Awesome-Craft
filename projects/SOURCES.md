@@ -19,3 +19,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | cap | https://github.com/CapSoftware/Cap | `f2f338b90fd4` | 2026-11-15 | NOASSERTION | none |
 | chatwoot | https://github.com/chatwoot/chatwoot | `1ef1d2b45ae0` | 2026-11-15 | NOASSERTION | none |
 | jitsi-meet | https://github.com/jitsi/jitsi-meet | `8622ed7600f7` | 2026-11-15 | Apache-2.0 | none |
+| mattermost | https://github.com/mattermost/mattermost | `a69dda3fe70c` | 2026-11-15 | NOASSERTION | none |
