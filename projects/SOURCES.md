@@ -16,3 +16,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | umami | https://github.com/umami-software/umami | `b18d5144dfe7` | 2026-11-15 | MIT | none |
 | listmonk | https://github.com/knadh/listmonk | `e735e0b23421` | 2026-11-15 | AGPL-3.0 | none |
 | openseo | https://github.com/TahaHachana/OpenSEO | `670fd119e83c` | 2026-11-15 | none | none |
+| cap | https://github.com/CapSoftware/Cap | `f2f338b90fd4` | 2026-11-15 | NOASSERTION | none |
