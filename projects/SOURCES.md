@@ -14,3 +14,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | analytics | https://github.com/plausible/analytics | `8e5982c237c8` | 2026-11-15 | AGPL-3.0 | none |
 | posthog | https://github.com/PostHog/posthog | `27e9e3fb2414` | 2026-11-15 | NOASSERTION | none |
 | umami | https://github.com/umami-software/umami | `b18d5144dfe7` | 2026-11-15 | MIT | none |
+| listmonk | https://github.com/knadh/listmonk | `e735e0b23421` | 2026-11-15 | AGPL-3.0 | none |
