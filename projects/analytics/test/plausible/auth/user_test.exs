@@ -1,0 +1,205 @@
+defmodule Plausible.Auth.UserTest do
+  use Plausible.DataCase, async: true
+
+  alias Plausible.Auth.User
+
+  describe "settings_changeset/2" do
+    test "fails for empty input and user" do
+      changeset = User.settings_changeset(%User{}, %{})
+
+      refute changeset.valid?
+    end
+
+    test "succeeds for non-empty user even if input is empty" do
+      changeset =
+        User.settings_changeset(
+          %User{name: "Mary Jane", email: "mary@plausible.test", theme: "system"},
+          %{}
+        )
+
+      assert changeset.valid?
+    end
+
+    test "succeeds for valid user details input" do
+      changeset =
+        User.settings_changeset(
+          %User{name: "Mary Jane", email: "mary@plausible.test", theme: "system"},
+          %{name: "Tony Mangle", email: "tony@plausible.test"}
+        )
+
+      assert changeset.valid?
+      assert changeset.changes == %{name: "Tony Mangle", email: "tony@plausible.test"}
+    end
+
+    test "succeeds for valid theme input" do
+      changeset =
+        User.settings_changeset(
+          %User{name: "Mary Jane", email: "mary@plausible.test", theme: "system"},
+          %{theme: "dark"}
+        )
+
+      assert changeset.valid?
+      assert changeset.changes == %{theme: :dark}
+    end
+
+    test "fails on invalid user details input" do
+      changeset =
+        User.settings_changeset(
+          %User{name: "Mary Jane", email: "mary@plausible.test", theme: "system"},
+          %{name: ""}
+        )
+
+      refute changeset.valid?
+      assert changeset.errors[:name]
+    end
+
+    test "fails on invalid theme input" do
+      changeset =
+        User.settings_changeset(
+          %User{name: "Mary Jane", email: "mary@plausible.test", theme: "system"},
+          %{theme: "invalid"}
+        )
+
+      refute changeset.valid?
+      assert changeset.errors[:theme]
+    end
+  end
+
+  describe "password_strength/1" do
+    test "scores password with all arguments in changes" do
+      assert %{score: score, warning: warning, suggestions: suggestions} =
+               %User{}
+               |> change(
+                 name: "Jane Doe",
+                 email: "user@example.com",
+                 password: "asd"
+               )
+               |> User.password_strength()
+
+      assert score < 3
+      assert warning != ""
+      assert suggestions != []
+    end
+
+    test "checks for existing phrases using name and email from changes" do
+      strength =
+        %User{}
+        |> change(
+          name: "Clayman Sillywaggle",
+          email: "clay@example.com",
+          password: "claymansillywaggle"
+        )
+        |> User.password_strength()
+
+      assert strength.score == 1
+    end
+
+    test "checks for existing phrases using name and email from source" do
+      strength =
+        %User{
+          name: "Clayman Sillywaggle",
+          email: "clay@example.com"
+        }
+        |> change(password: "claymansillywaggle")
+        |> User.password_strength()
+
+      assert strength.score == 1
+    end
+
+    test "treats passwords past 32 bytes as very strong" do
+      strength =
+        %User{
+          name: "Clayman Sillywaggle",
+          email: "clay@example.com"
+        }
+        |> change(password: String.duplicate("a", 33))
+        |> User.password_strength()
+
+      assert strength.score == 4
+    end
+  end
+
+  describe "password strength validation" do
+    test "succeeds for complex enough password" do
+      changeset =
+        User.new(%{
+          name: "Jane Doe",
+          email: "jane@example.com",
+          password: "very-secret-and-very-long-123",
+          password_confirmation: "very-secret-and-very-long-123"
+        })
+
+      assert changeset.valid?
+    end
+
+    test "fails for password not complex enough" do
+      changeset =
+        User.new(%{
+          name: "Jane Doe",
+          email: "jane@example.com",
+          password: "asdasdasdasd",
+          password_confirmation: "asdasdasdasd"
+        })
+
+      refute changeset.valid?
+      assert {"is too weak", [validation: :strength]} = changeset.errors[:password]
+    end
+  end
+
+  on_ee do
+    describe "new/1 email validation" do
+      defp new_changeset(email) do
+        User.new(%{
+          name: "Jane Doe",
+          email: email,
+          password: "very-secret-and-very-long-123",
+          password_confirmation: "very-secret-and-very-long-123"
+        })
+      end
+
+      test "fails for a disposable email domain" do
+        changeset = new_changeset("jane@mailinator.com")
+
+        refute changeset.valid?
+
+        assert {"Disposable email addresses are not allowed", [validation: :disposable_email]} =
+                 changeset.errors[:email]
+      end
+
+      test "does not hash the password for a rejected email" do
+        refute new_changeset("jane@mailinator.com").changes[:password_hash]
+        assert new_changeset("jane@example.com").changes[:password_hash]
+      end
+
+      test "succeeds for a regular email domain" do
+        assert new_changeset("jane@example.com").valid?
+      end
+    end
+
+    describe "email_changeset/2" do
+      @password "very-secret-and-very-long-123"
+
+      defp change_email(email) do
+        user = %User{
+          email: "jane@example.com",
+          password_hash: Plausible.Auth.Password.hash(@password)
+        }
+
+        User.email_changeset(user, %{email: email, password: @password})
+      end
+
+      test "fails when changing to a disposable email domain" do
+        changeset = change_email("jane@mailinator.com")
+
+        refute changeset.valid?
+
+        assert {"Disposable email addresses are not allowed", [validation: :disposable_email]} =
+                 changeset.errors[:email]
+      end
+
+      test "succeeds when changing to a regular email domain" do
+        assert change_email("jane@hotmail.com").valid?
+      end
+    end
+  end
+end

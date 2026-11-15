@@ -11,3 +11,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | cal.diy | https://github.com/calcom/cal.diy | `ae027bb70e69` | 2026-11-15 | MIT | none |
 | documenso | https://github.com/documenso/documenso | `1e2333d534e1` | 2026-11-15 | AGPL-3.0 | none |
 | formbricks | https://github.com/formbricks/formbricks | `6fa661f909cd` | 2026-11-15 | NOASSERTION | none |
+| analytics | https://github.com/plausible/analytics | `8e5982c237c8` | 2026-11-15 | AGPL-3.0 | none |
