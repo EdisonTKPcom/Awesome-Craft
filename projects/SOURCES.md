@@ -8,3 +8,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | openproject | https://github.com/opf/openproject | `f9a728e3035b` | 2026-11-15 | GPL-3.0 | none |
 | plane | https://github.com/makeplane/plane | `290383d7f92f` | 2026-11-15 | AGPL-3.0 | none |
 | appflowy | https://github.com/AppFlowy-IO/AppFlowy | `8fcee27d9bd9` | 2026-11-15 | AGPL-3.0 | none |
+| cal.diy | https://github.com/calcom/cal.diy | `ae027bb70e69` | 2026-11-15 | MIT | none |
