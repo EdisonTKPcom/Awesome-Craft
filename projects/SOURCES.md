@@ -12,3 +12,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | documenso | https://github.com/documenso/documenso | `1e2333d534e1` | 2026-11-15 | AGPL-3.0 | none |
 | formbricks | https://github.com/formbricks/formbricks | `6fa661f909cd` | 2026-11-15 | NOASSERTION | none |
 | analytics | https://github.com/plausible/analytics | `8e5982c237c8` | 2026-11-15 | AGPL-3.0 | none |
+| posthog | https://github.com/PostHog/posthog | `27e9e3fb2414` | 2026-11-15 | NOASSERTION | none |
