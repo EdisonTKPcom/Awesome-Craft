@@ -4,6 +4,8 @@
 
 > A curated list of open-source, self-hostable alternatives to popular SaaS tools.
 
+<img src="assets/craft-env.svg" alt="Pixel-art crafting scene" width="100%">
+
 ![Tools](https://img.shields.io/badge/tools-25-6366f1?style=for-the-badge)
 [![Categories](https://img.shields.io/badge/categories-13-0ea5e9?style=for-the-badge)](#contents)
 [![Combined stars](https://img.shields.io/badge/combined_stars-1.16M-f59e0b?style=for-the-badge&logo=github)](#-leaderboard)
