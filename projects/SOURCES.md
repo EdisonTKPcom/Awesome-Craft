@@ -9,3 +9,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | plane | https://github.com/makeplane/plane | `290383d7f92f` | 2026-11-15 | AGPL-3.0 | none |
 | appflowy | https://github.com/AppFlowy-IO/AppFlowy | `8fcee27d9bd9` | 2026-11-15 | AGPL-3.0 | none |
 | cal.diy | https://github.com/calcom/cal.diy | `ae027bb70e69` | 2026-11-15 | MIT | none |
+| documenso | https://github.com/documenso/documenso | `1e2333d534e1` | 2026-11-15 | AGPL-3.0 | none |
