@@ -27,3 +27,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | openwhispr | https://github.com/OpenWhispr/openwhispr | `f178fa9fc359` | 2026-11-15 | MIT | none |
 | voicestudio | https://github.com/debpalash/VoiceStudio | `2c1f3f7784be` | 2026-11-15 | AGPL-3.0 | none |
 | rocket.chat | https://github.com/RocketChat/Rocket.Chat | `b096d6a2fbda` | 2026-11-15 | NOASSERTION | none |
+| server | https://github.com/nextcloud/server | `a3081d0a54e5` | 2026-11-15 | AGPL-3.0 | none |
