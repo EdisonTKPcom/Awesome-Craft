@@ -22,3 +22,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | mattermost | https://github.com/mattermost/mattermost | `a69dda3fe70c` | 2026-11-15 | NOASSERTION | none |
 | penpot | https://github.com/penpot/penpot | `dc340f74af93` | 2026-11-15 | MPL-2.0 | none |
 | vaultwarden | https://github.com/dani-garcia/vaultwarden | `b0048fa27ff2` | 2026-11-15 | AGPL-3.0 | none |
+| n8n | https://github.com/n8n-io/n8n | `51f8cf624992` | 2026-11-15 | NOASSERTION | none |
