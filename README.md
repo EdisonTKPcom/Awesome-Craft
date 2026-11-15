@@ -94,7 +94,7 @@ pie showData
 ## Business and CRM
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/twentyhq/twenty" alt="Twenty preview" width="260"><br><sub><b>Twenty</b> · replaces Salesforce, HubSpot</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/twentyhq-twenty.png" alt="Twenty preview" width="260"><br><sub><b>Twenty</b> · replaces Salesforce, HubSpot</sub></td></tr>
 </table>
 
 - [Twenty](https://github.com/twentyhq/twenty) - Modern CRM with pipelines, records and workflows, an alternative to Salesforce and HubSpot. ![Stars](https://img.shields.io/github/stars/twentyhq/twenty?style=flat-square&label=%E2%AD%90)
@@ -102,7 +102,7 @@ pie showData
 ## Project Management
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/opf/openproject" alt="OpenProject preview" width="260"><br><sub><b>OpenProject</b> · replaces Asana</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/makeplane/plane" alt="Plane preview" width="260"><br><sub><b>Plane</b> · replaces Jira, Linear</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/opf-openproject.png" alt="OpenProject preview" width="260"><br><sub><b>OpenProject</b> · replaces Asana</sub></td><td align="center" width="33%"><img src="assets/thumbs/makeplane-plane.png" alt="Plane preview" width="260"><br><sub><b>Plane</b> · replaces Jira, Linear</sub></td></tr>
 </table>
 
 - [OpenProject](https://github.com/opf/openproject) - Full project management suite with Gantt, boards and time tracking, an alternative to Asana. ![Stars](https://img.shields.io/github/stars/opf/openproject?style=flat-square&label=%E2%AD%90)
@@ -111,7 +111,7 @@ pie showData
 ## Docs and Knowledge
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/AppFlowy-IO/AppFlowy" alt="AppFlowy preview" width="260"><br><sub><b>AppFlowy</b> · replaces Notion</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/appflowy-io-appflowy.png" alt="AppFlowy preview" width="260"><br><sub><b>AppFlowy</b> · replaces Notion</sub></td></tr>
 </table>
 
 - [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) - Docs, wikis and databases in one workspace, an alternative to Notion. ![Stars](https://img.shields.io/github/stars/AppFlowy-IO/AppFlowy?style=flat-square&label=%E2%AD%90)
@@ -119,7 +119,7 @@ pie showData
 ## Scheduling
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/calcom/cal.diy" alt="Cal.diy preview" width="260"><br><sub><b>Cal.diy</b> · replaces Calendly</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/calcom-cal.diy.png" alt="Cal.diy preview" width="260"><br><sub><b>Cal.diy</b> · replaces Calendly</sub></td></tr>
 </table>
 
 - [Cal.diy](https://github.com/calcom/cal.diy) - Booking pages from the Cal.com team, an alternative to Calendly. ![Stars](https://img.shields.io/github/stars/calcom/cal.diy?style=flat-square&label=%E2%AD%90)
@@ -127,7 +127,7 @@ pie showData
 ## Forms and E-Signatures
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/documenso/documenso" alt="Documenso preview" width="260"><br><sub><b>Documenso</b> · replaces DocuSign</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/formbricks/formbricks" alt="Formbricks preview" width="260"><br><sub><b>Formbricks</b> · replaces Typeform, SurveyMonkey</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/documenso-documenso.png" alt="Documenso preview" width="260"><br><sub><b>Documenso</b> · replaces DocuSign</sub></td><td align="center" width="33%"><img src="assets/thumbs/formbricks-formbricks.png" alt="Formbricks preview" width="260"><br><sub><b>Formbricks</b> · replaces Typeform, SurveyMonkey</sub></td></tr>
 </table>
 
 - [Documenso](https://github.com/documenso/documenso) - Document signing with audit trails, an alternative to DocuSign. ![Stars](https://img.shields.io/github/stars/documenso/documenso?style=flat-square&label=%E2%AD%90)
@@ -136,7 +136,7 @@ pie showData
 ## Analytics
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/plausible/analytics" alt="Plausible preview" width="260"><br><sub><b>Plausible</b> · replaces Google Analytics</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/PostHog/posthog" alt="PostHog preview" width="260"><br><sub><b>PostHog</b> · replaces Mixpanel, Amplitude</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/umami-software/umami" alt="Umami preview" width="260"><br><sub><b>Umami</b> · replaces Google Analytics</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/plausible-analytics.png" alt="Plausible preview" width="260"><br><sub><b>Plausible</b> · replaces Google Analytics</sub></td><td align="center" width="33%"><img src="assets/thumbs/posthog-posthog.png" alt="PostHog preview" width="260"><br><sub><b>PostHog</b> · replaces Mixpanel, Amplitude</sub></td><td align="center" width="33%"><img src="assets/thumbs/umami-software-umami.png" alt="Umami preview" width="260"><br><sub><b>Umami</b> · replaces Google Analytics</sub></td></tr>
 </table>
 
 - [Plausible](https://github.com/plausible/analytics) - Lightweight, privacy-friendly web analytics, an alternative to Google Analytics. ![Stars](https://img.shields.io/github/stars/plausible/analytics?style=flat-square&label=%E2%AD%90)
@@ -146,7 +146,7 @@ pie showData
 ## Marketing and SEO
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/knadh/listmonk" alt="Listmonk preview" width="260"><br><sub><b>Listmonk</b> · replaces Mailchimp</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/TahaHachana/OpenSEO" alt="OpenSEO preview" width="260"><br><sub><b>OpenSEO</b> · replaces Semrush</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/knadh-listmonk.png" alt="Listmonk preview" width="260"><br><sub><b>Listmonk</b> · replaces Mailchimp</sub></td><td align="center" width="33%"><img src="assets/thumbs/tahahachana-openseo.png" alt="OpenSEO preview" width="260"><br><sub><b>OpenSEO</b> · replaces Semrush</sub></td></tr>
 </table>
 
 - [Listmonk](https://github.com/knadh/listmonk) - Newsletter and mailing list manager, an alternative to Mailchimp. ![Stars](https://img.shields.io/github/stars/knadh/listmonk?style=flat-square&label=%E2%AD%90)
@@ -155,8 +155,8 @@ pie showData
 ## Communication and Support
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/CapSoftware/Cap" alt="Cap preview" width="260"><br><sub><b>Cap</b> · replaces Loom</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/chatwoot/chatwoot" alt="Chatwoot preview" width="260"><br><sub><b>Chatwoot</b> · replaces Intercom</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/jitsi/jitsi-meet" alt="Jitsi Meet preview" width="260"><br><sub><b>Jitsi Meet</b> · replaces Zoom</sub></td></tr>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/mattermost/mattermost" alt="Mattermost preview" width="260"><br><sub><b>Mattermost</b> · replaces Slack</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/RocketChat/Rocket.Chat" alt="Rocket.Chat preview" width="260"><br><sub><b>Rocket.Chat</b> · replaces Slack</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/capsoftware-cap.png" alt="Cap preview" width="260"><br><sub><b>Cap</b> · replaces Loom</sub></td><td align="center" width="33%"><img src="assets/thumbs/chatwoot-chatwoot.png" alt="Chatwoot preview" width="260"><br><sub><b>Chatwoot</b> · replaces Intercom</sub></td><td align="center" width="33%"><img src="assets/thumbs/jitsi-jitsi-meet.png" alt="Jitsi Meet preview" width="260"><br><sub><b>Jitsi Meet</b> · replaces Zoom</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/mattermost-mattermost.png" alt="Mattermost preview" width="260"><br><sub><b>Mattermost</b> · replaces Slack</sub></td><td align="center" width="33%"><img src="assets/thumbs/rocketchat-rocket.chat.png" alt="Rocket.Chat preview" width="260"><br><sub><b>Rocket.Chat</b> · replaces Slack</sub></td></tr>
 </table>
 
 - [Cap](https://github.com/CapSoftware/Cap) - Screen recording and sharing, an alternative to Loom. ![Stars](https://img.shields.io/github/stars/CapSoftware/Cap?style=flat-square&label=%E2%AD%90)
@@ -168,7 +168,7 @@ pie showData
 ## Design
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/penpot/penpot" alt="Penpot preview" width="260"><br><sub><b>Penpot</b> · replaces Figma</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/penpot-penpot.png" alt="Penpot preview" width="260"><br><sub><b>Penpot</b> · replaces Figma</sub></td></tr>
 </table>
 
 - [Penpot](https://github.com/penpot/penpot) - Design and prototyping, an alternative to Figma. ![Stars](https://img.shields.io/github/stars/penpot/penpot?style=flat-square&label=%E2%AD%90)
@@ -176,7 +176,7 @@ pie showData
 ## Files and Security
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/nextcloud/server" alt="Nextcloud preview" width="260"><br><sub><b>Nextcloud</b> · replaces Google Drive, Dropbox</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/dani-garcia/vaultwarden" alt="Vaultwarden preview" width="260"><br><sub><b>Vaultwarden</b> · replaces 1Password</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/nextcloud-server.png" alt="Nextcloud preview" width="260"><br><sub><b>Nextcloud</b> · replaces Google Drive, Dropbox</sub></td><td align="center" width="33%"><img src="assets/thumbs/dani-garcia-vaultwarden.png" alt="Vaultwarden preview" width="260"><br><sub><b>Vaultwarden</b> · replaces 1Password</sub></td></tr>
 </table>
 
 - [Nextcloud](https://github.com/nextcloud/server) - File sync, sharing and collaboration, an alternative to Google Drive and Dropbox. ![Stars](https://img.shields.io/github/stars/nextcloud/server?style=flat-square&label=%E2%AD%90)
@@ -185,7 +185,7 @@ pie showData
 ## Finance
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/invoiceninja/invoiceninja" alt="Invoice Ninja preview" width="260"><br><sub><b>Invoice Ninja</b> · replaces FreshBooks</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/invoiceninja-invoiceninja.png" alt="Invoice Ninja preview" width="260"><br><sub><b>Invoice Ninja</b> · replaces FreshBooks</sub></td></tr>
 </table>
 
 - [Invoice Ninja](https://github.com/invoiceninja/invoiceninja) - Invoicing, quotes and payments, an alternative to FreshBooks. ![Stars](https://img.shields.io/github/stars/invoiceninja/invoiceninja?style=flat-square&label=%E2%AD%90)
@@ -193,7 +193,7 @@ pie showData
 ## Automation
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/n8n-io/n8n" alt="n8n preview" width="260"><br><sub><b>n8n</b> · replaces Zapier</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/n8n-io-n8n.png" alt="n8n preview" width="260"><br><sub><b>n8n</b> · replaces Zapier</sub></td></tr>
 </table>
 
 - [n8n](https://github.com/n8n-io/n8n) - Workflow automation. Fair-code licence, not OSI open source, an alternative to Zapier. ![Stars](https://img.shields.io/github/stars/n8n-io/n8n?style=flat-square&label=%E2%AD%90)
@@ -201,7 +201,7 @@ pie showData
 ## AI, Voice and Media
 
 <table>
-<tr><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/Anil-matcha/Open-Generative-AI" alt="Open Generative AI preview" width="260"><br><sub><b>Open Generative AI</b> · replaces Higgsfield</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/OpenWhispr/openwhispr" alt="OpenWhispr preview" width="260"><br><sub><b>OpenWhispr</b> · replaces Wispr Flow</sub></td><td align="center" width="33%"><img src="https://opengraph.githubassets.com/1/debpalash/VoiceStudio" alt="VoiceStudio preview" width="260"><br><sub><b>VoiceStudio</b> · replaces ElevenLabs</sub></td></tr>
+<tr><td align="center" width="33%"><img src="assets/thumbs/anil-matcha-open-generative-ai.png" alt="Open Generative AI preview" width="260"><br><sub><b>Open Generative AI</b> · replaces Higgsfield</sub></td><td align="center" width="33%"><img src="assets/thumbs/openwhispr-openwhispr.png" alt="OpenWhispr preview" width="260"><br><sub><b>OpenWhispr</b> · replaces Wispr Flow</sub></td><td align="center" width="33%"><img src="assets/thumbs/debpalash-voicestudio.png" alt="VoiceStudio preview" width="260"><br><sub><b>VoiceStudio</b> · replaces ElevenLabs</sub></td></tr>
 </table>
 
 - [Open Generative AI](https://github.com/Anil-matcha/Open-Generative-AI) - AI image and video generation. Self-described as uncensored, so not for client-facing work, an alternative to Higgsfield. ![Stars](https://img.shields.io/github/stars/Anil-matcha/Open-Generative-AI?style=flat-square&label=%E2%AD%90)
