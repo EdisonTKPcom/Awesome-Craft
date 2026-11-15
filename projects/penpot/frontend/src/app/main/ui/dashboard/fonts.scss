@@ -1,0 +1,290 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_utils.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_borders.scss" as *;
+@use "ds/typography.scss" as *;
+@use "ds/spacing.scss" as *;
+@use "ds/mixins.scss" as *;
+@use "dashboard/common/header";
+
+.dashboard-fonts {
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: px2rem(120);
+  padding-block-end: px2rem(120);
+  overflow-y: auto;
+}
+
+.dashboard-installed-fonts {
+  max-inline-size: px2rem(1000);
+  inline-size: 100%;
+  display: flex;
+  margin-block-start: var(--sp-xxl);
+  flex-direction: column;
+
+  .font-item {
+    color: var(--color-background-secondary);
+  }
+}
+
+.installed-fonts-title {
+  color: var(--color-foreground-secondary);
+  margin: var(--sp-xs);
+}
+
+.installed-fonts-header {
+  @include use-typography("headline-small");
+
+  align-items: center;
+  color: var(--color-foreground-secondary);
+  display: flex;
+  block-size: $sz-40;
+  padding-inline-start: var(--sp-xxl);
+
+  > .family {
+    @include two-line-text-ellipsis;
+
+    min-inline-size: $sz-200;
+    inline-size: $sz-200;
+  }
+
+  > .variants {
+    padding-inline-start: var(--sp-m);
+  }
+}
+
+.search-input {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.search-font-input {
+  @include use-typography("body-medium");
+
+  background-color: var(--color-background-tertiary);
+  border-radius: $br-8;
+  border: $b-1 solid transparent;
+  color: var(--color-foreground-primary);
+  block-size: $sz-32;
+  margin: 0;
+  padding: 0 var(--sp-s);
+  inline-size: px2rem(152);
+
+  &:focus {
+    outline: $b-1 solid var(--color-accent-primary);
+  }
+
+  &::placeholder {
+    color: var(--color-foreground-secondary);
+  }
+}
+
+.font-item {
+  @include use-typography("body-medium");
+
+  align-items: center;
+  background-color: var(--color-background-tertiary);
+  border-radius: $br-4;
+  color: var(--color-foreground-secondary);
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: var(--sp-xs);
+  max-inline-size: px2rem(1000);
+  padding: var(--sp-m) var(--sp-xxl);
+  inline-size: 100%;
+
+  .name-input {
+    @include use-typography("body-medium");
+    @include text-ellipsis;
+
+    border: $b-1 solid transparent;
+    margin: 0;
+    padding: var(--sp-s);
+    background-color: var(--color-background-tertiary);
+    border-radius: $br-8;
+    color: var(--color-foreground-primary);
+
+    &:focus {
+      outline: $b-1 solid var(--color-accent-primary);
+      overflow: visible;
+      text-overflow: unset;
+    }
+  }
+
+  > .family {
+    @include two-line-text-ellipsis;
+
+    min-inline-size: $sz-200;
+    inline-size: $sz-200;
+
+    &.is-edition {
+      overflow: visible;
+    }
+  }
+
+  > .filenames {
+    @include text-ellipsis;
+
+    min-inline-size: $sz-200;
+  }
+
+  > .variants {
+    @include use-typography("body-medium");
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    padding-inline-start: var(--sp-l);
+    gap: $sz-6;
+
+    .variant {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-s) var(--sp-m);
+      cursor: pointer;
+      gap: var(--sp-xs);
+
+      // The delete button only shows its icon while the variant is hovered.
+      --variant-delete-color: transparent;
+
+      &:hover {
+        --variant-delete-color: var(--color-foreground-secondary);
+      }
+    }
+
+    .inhert-variant {
+      cursor: default;
+    }
+  }
+
+  .table-field {
+    color: var(--color-foreground-primary);
+
+    .variant {
+      background-color: var(--color-background-quaternary);
+      border-radius: $br-8;
+    }
+  }
+
+  .filenames {
+    @include use-typography("body-small");
+    @include text-ellipsis;
+
+    min-inline-size: $sz-400;
+    padding-inline-start: var(--sp-xxxl);
+  }
+
+  .options {
+    display: flex;
+    justify-content: flex-end;
+    min-inline-size: px2rem(180);
+    align-items: center;
+    gap: var(--sp-s);
+  }
+}
+
+.variant-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: $sz-16;
+  inline-size: $sz-16;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--variant-delete-color);
+
+  &:focus-visible {
+    --variant-delete-color: var(--color-foreground-secondary);
+  }
+}
+
+// With the 8px gap of .options it keeps 12px on each side.
+.warning-icon {
+  margin-inline: var(--sp-xs);
+  color: var(--color-accent-warning);
+}
+
+// A DS button keeps its label at the start when it grows.
+.upload-button {
+  min-inline-size: px2rem(100);
+  justify-content: center;
+}
+
+.dashboard-fonts-upload {
+  max-inline-size: px2rem(1000);
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .dismiss-button {
+    margin-inline-start: var(--sp-xs);
+  }
+}
+
+.dashboard-fonts-hero {
+  @include use-typography("body-medium");
+
+  padding: var(--sp-xxxl) 0;
+  margin-block-start: px2rem(80);
+  display: flex;
+  justify-content: space-between;
+
+  .add-font-button {
+    --button-height: #{$sz-40};
+
+    inline-size: 100%;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xxl);
+    color: var(--color-background-secondary);
+    inline-size: $sz-500;
+
+    .hero-title {
+      color: var(--color-foreground-primary);
+    }
+
+    .hero-text {
+      @include use-typography("body-large");
+
+      color: var(--color-foreground-secondary);
+    }
+  }
+}
+
+.fonts-placeholder {
+  align-items: center;
+  border-radius: $br-8;
+  border: $b-1 solid var(--color-background-quaternary);
+  display: flex;
+  flex-direction: column;
+  block-size: $sz-160;
+  justify-content: center;
+  margin-block-start: var(--sp-l);
+  max-inline-size: px2rem(1000);
+  inline-size: 100%;
+
+  .placeholder-icon {
+    color: var(--color-foreground-secondary);
+  }
+
+  .label {
+    @include use-typography("body-medium");
+
+    color: var(--color-foreground-secondary);
+  }
+}

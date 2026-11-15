@@ -1,0 +1,143 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.text-palette {
+  block-size: 100%;
+  display: flex;
+}
+
+// Raw buttons on purpose: full-height scroll arrows with a fade, not DS
+// button sizes.
+.left-arrow,
+.right-arrow {
+  --arrow-foreground-color: var(--color-foreground-secondary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  block-size: 100%;
+  inline-size: $sz-24;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--arrow-foreground-color);
+
+  // Above the typography list, which is positioned and comes after the
+  // left arrow, so the fade covers the items that scroll under it.
+  z-index: 2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: calc(-1 * px2rem(80));
+    block-size: 100%;
+    inline-size: px2rem(80);
+    z-index: 1;
+    background-image: linear-gradient(to left, var(--color-background-primary) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    --arrow-foreground-color: var(--color-accent-primary);
+  }
+
+  &:disabled {
+    --arrow-foreground-color: var(--color-foreground-disabled);
+
+    &::after {
+      background-image: none;
+    }
+  }
+}
+
+.left-arrow {
+  &::after {
+    inset-inline-start: $sz-24;
+    background-image: linear-gradient(to right, var(--color-background-primary) 0%, transparent 100%);
+  }
+
+  .arrow-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.text-palette-content {
+  display: flex;
+  overflow: hidden;
+}
+
+.text-palette-inside {
+  display: flex;
+  gap: var(--sp-s);
+}
+
+.typography-item {
+  --typography-item-background-color: var(--color-background-tertiary);
+
+  @include use-typography("body-small");
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  block-size: 100%;
+  inline-size: px2rem(136);
+  padding: var(--sp-s);
+  border-radius: $br-8;
+  background-color: var(--typography-item-background-color);
+
+  &:first-child {
+    margin-inline-start: var(--sp-s);
+  }
+
+  .typography-name,
+  .typography-font,
+  .typography-data {
+    display: block;
+    max-inline-size: 99%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    block-size: $sz-16;
+    inline-size: $sz-120;
+    color: var(--color-foreground-secondary);
+  }
+
+  .typography-name {
+    color: var(--color-foreground-primary);
+  }
+
+  &.mid-item {
+    .typography-data {
+      display: none;
+    }
+  }
+
+  &.small-item {
+    .typography-data,
+    .typography-font {
+      display: none;
+    }
+  }
+
+  &:hover {
+    --typography-item-background-color: var(--color-background-quaternary);
+  }
+}
+
+.text-palette-empty {
+  @include use-typography("body-small");
+
+  color: var(--color-foreground-secondary);
+}

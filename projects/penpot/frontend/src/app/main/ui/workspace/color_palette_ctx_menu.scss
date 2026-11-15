@@ -1,0 +1,94 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.palette-menu {
+  position: absolute;
+  inset-inline-start: auto;
+  inset-block-end: var(--height);
+  max-inline-size: $sz-480;
+  padding: var(--sp-xs);
+  margin: 0 0 var(--sp-xs) 0;
+
+  // Context menu level of the legacy scale, inside the palette.
+  z-index: 4;
+  border-radius: px2rem(10);
+  background-color: var(--color-background-tertiary);
+
+  .palette-library,
+  .recent-colors,
+  .file-library {
+    --library-name-color: var(--color-foreground-secondary);
+
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    inline-size: 100%;
+    padding: var(--sp-s);
+    border-radius: $br-8;
+    margin-block-end: var(--sp-xs);
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+
+    .option-wrapper {
+      inline-size: 100%;
+
+      .library-name {
+        @include use-typography("body-small");
+
+        color: var(--library-name-color);
+        display: grid;
+        grid-template-columns: 1fr $sz-24;
+
+        .lib-name-wrapper {
+          display: flex;
+          max-inline-size: $sz-400;
+
+          .lib-name {
+            display: block;
+            max-inline-size: px2rem(380);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .lib-num {
+            margin-inline-start: var(--sp-xs);
+          }
+        }
+
+        .icon-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-inline-start: var(--sp-xs);
+        }
+      }
+
+      .color-sample {
+        display: flex;
+        flex-direction: row;
+        gap: var(--sp-s);
+        margin-block-start: var(--sp-xs);
+      }
+    }
+
+    &.selected,
+    &:hover {
+      --library-name-color: var(--color-foreground-primary);
+    }
+
+    &:hover {
+      background-color: var(--color-background-quaternary);
+    }
+  }
+}

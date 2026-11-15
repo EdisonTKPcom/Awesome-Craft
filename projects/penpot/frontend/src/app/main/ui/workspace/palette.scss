@@ -1,0 +1,245 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.palette-wrapper {
+  position: absolute;
+  inline-size: 100vw;
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  padding-block-end: var(--sp-xs);
+
+  /** Aligns AI Chat button **/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-s);
+}
+
+// `right` and `width` stay physical: they are the transitioned properties.
+.palettes {
+  // Above .viewport-overlays (z-index 1), which covers the whole viewport.
+  z-index: 2;
+  position: relative;
+  right: 0;
+  grid-area: color-palette;
+  display: grid;
+  grid-template-areas:
+    "resize resize resize"
+    "buttons actions palette";
+  grid-template-rows: px2rem(8) 1fr;
+  grid-template-columns: $sz-32 auto 1fr;
+  max-block-size: px2rem(80);
+  block-size: var(--height);
+  width: fit-content;
+  padding: 0 0 var(--sp-s) var(--sp-s);
+  border-radius: $br-8;
+  background-color: var(--color-background-primary);
+  border: $b-2 solid var(--color-background-quaternary);
+  transition:
+    right 0.3s,
+    opacity 0.2s,
+    width 0.3s;
+
+  &.wide {
+    width: 100%;
+  }
+
+  .resize-area {
+    grid-area: resize;
+    block-size: px2rem(8);
+    inline-size: calc(100% - px2rem(8));
+    border-radius: $br-circle;
+    cursor: ns-resize;
+    background-color: var(--color-background-primary);
+  }
+
+  .palette-btn-list {
+    grid-area: buttons;
+    background-color: var(--color-background-primary);
+    block-size: calc(var(--height) - px2rem(16));
+    inline-size: $sz-32;
+    margin: 0;
+    list-style: none;
+    gap: var(--sp-xxs);
+
+    &.mid-palette,
+    &.small-palette {
+      display: flex;
+    }
+
+    .palette-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: $br-8;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+  }
+
+  // DS icon button stretched to the palette height.
+  .palette-actions {
+    --button-height: calc(var(--height) - #{px2rem(16)});
+
+    grid-area: actions;
+    margin-inline-start: var(--sp-xs);
+  }
+
+  .palette {
+    grid-area: palette;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+}
+
+.handler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  inline-size: $sz-12;
+  block-size: 100%;
+
+  .handler-btn {
+    inline-size: px2rem(4);
+    block-size: 100%;
+    max-block-size: $sz-40;
+    margin: var(--sp-s) var(--sp-xs);
+    padding: 0;
+    border-radius: $br-4;
+    background-color: var(--color-background-quaternary);
+  }
+}
+
+.mid-palette,
+.small-palette {
+  grid-template-columns: px2rem(64) auto 1fr;
+}
+
+.hidden-bts {
+  right: px2rem(2);
+
+  // Back to the .viewport-overlays level (z-index 1) while collapsed.
+  z-index: 1;
+  width: px2rem(22);
+  grid-template-columns: px2rem(8) auto 1fr;
+  padding: 0;
+  border-inline-start: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+
+  .palette-btn-list {
+    opacity: 0;
+    visibility: hidden;
+    inline-size: 0;
+
+    .palette-item {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .resize-area {
+    visibility: hidden;
+    inline-size: 0;
+  }
+
+  .palette-actions {
+    visibility: hidden;
+  }
+
+  .palette {
+    visibility: hidden;
+  }
+
+  .handler {
+    padding-block-end: var(--sp-s);
+  }
+}
+
+/** AI Chat button styles **/
+// Not used in palette.cljs: the external chat widget (Inkeep, see #6509)
+// injected into #palette-wrapper may use these class names, so they stay.
+.help-btn {
+  --help-btn-foreground-color: var(--color-foreground-secondary);
+  --help-btn-background-color: var(--color-background-tertiary);
+
+  z-index: var(--z-index-panels);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: $sz-40;
+  block-size: $sz-40;
+  border: none;
+  border-radius: $br-circle;
+  background-color: var(--help-btn-background-color);
+  color: var(--help-btn-foreground-color);
+  cursor: pointer;
+
+  // The widget markup is external, so its icon has no known class.
+  svg {
+    stroke: var(--help-btn-foreground-color);
+  }
+
+  &:hover {
+    --help-btn-foreground-color: var(--color-accent-primary);
+    --help-btn-background-color: var(--color-background-quaternary);
+
+    text-decoration: none;
+  }
+
+  &:active {
+    --help-btn-foreground-color: var(--color-accent-primary);
+    --help-btn-background-color: var(--color-background-secondary);
+
+    outline: none;
+    border: $b-1 solid var(--color-background-quaternary);
+  }
+
+  &:focus-visible {
+    --help-btn-foreground-color: var(--color-foreground-secondary);
+    --help-btn-background-color: var(--color-background-tertiary);
+
+    outline: none;
+    border: $b-1 solid var(--color-accent-primary);
+  }
+
+  &:global(.disabled),
+  &[disabled],
+  &:disabled {
+    --help-btn-foreground-color: var(--color-foreground-disabled);
+    --help-btn-background-color: var(--color-background-quaternary);
+
+    border: $b-1 solid var(--color-background-quaternary);
+    cursor: unset;
+  }
+
+  &.selected {
+    --help-btn-foreground-color: var(--color-accent-primary);
+    --help-btn-background-color: var(--color-background-quaternary);
+
+    outline: none;
+  }
+}
+
+.icon-help {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: var(--sp-xxl);
+  block-size: var(--sp-xxl);
+  color: transparent;
+  fill: none;
+  stroke-width: 1px;
+  stroke: var(--color-foreground-secondary);
+}

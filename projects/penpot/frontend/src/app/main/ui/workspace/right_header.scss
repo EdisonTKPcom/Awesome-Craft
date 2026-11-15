@@ -1,0 +1,134 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+// Only for the shared menu placeholders (%menu-dropdown, %menu-item-base,
+// %shortcut-*), which move with the menus group.
+@use "refactor/common-refactor.scss" as deprecated;
+
+.workspace-header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-inline-size: px2rem(256);
+  padding: var(--sp-s);
+  gap: var(--sp-m);
+  background-color: var(--color-background-primary);
+}
+
+.users-section {
+  position: relative;
+  min-inline-size: $sz-32;
+  max-inline-size: px2rem(72);
+  padding: var(--sp-xs) px2rem(6);
+}
+
+.separator {
+  flex: 1;
+}
+
+.zoom-widget {
+  --zoom-widget-foreground-color: var(--color-foreground-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: $sz-28;
+  max-inline-size: $sz-48;
+  inline-size: $sz-48;
+  padding: 0;
+  border: none;
+  border-radius: $br-8;
+  background: none;
+  cursor: pointer;
+
+  .label {
+    @include use-typography("body-small");
+
+    block-size: 100%;
+    padding: var(--sp-s) 0;
+    color: var(--zoom-widget-foreground-color);
+  }
+
+  &:hover,
+  &.selected {
+    --zoom-widget-foreground-color: var(--color-foreground-primary);
+  }
+}
+
+.dropdown {
+  @extend %menu-dropdown;
+
+  inset-inline-end: px2rem(2);
+  inset-block-start: px2rem(50);
+  inline-size: px2rem(272);
+}
+
+.basic-zoom-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: px2rem(6);
+  cursor: auto;
+}
+
+.zoom-btns {
+  display: flex;
+}
+
+.zoom-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 100%;
+  min-inline-size: $sz-48;
+  padding: 0;
+  margin: 0 px2rem(2);
+  color: var(--color-foreground-primary);
+}
+
+.zoom-option {
+  @extend %menu-item-base;
+
+  .shortcuts {
+    @extend %shortcut-base;
+
+    .shortcut-key {
+      @extend %shortcut-key-base;
+    }
+  }
+
+  &:hover {
+    color: var(--color-foreground-primary);
+
+    .shortcuts {
+      .shortcut-key {
+        color: var(--color-foreground-primary);
+      }
+    }
+  }
+}
+
+// Holds the unread dot.
+.comments-btn {
+  position: relative;
+}
+
+.unread {
+  position: absolute;
+  inline-size: px2rem(8);
+  block-size: px2rem(8);
+  border: $b-2 solid var(--color-background-tertiary);
+  border-radius: $br-circle;
+  background: var(--color-foreground-error);
+
+  // Over the top right corner of the icon, 4px from the 24px button edge.
+  inset-block-start: var(--sp-xs);
+  inset-inline-end: var(--sp-xs);
+}

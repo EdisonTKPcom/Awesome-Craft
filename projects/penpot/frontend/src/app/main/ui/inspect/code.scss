@@ -1,0 +1,150 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for the copy buttons, styled here until the shared copy button
+// moves to the DS.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.element-options {
+  display: flex;
+  flex-direction: column;
+  block-size: calc(100vh - #{$sz-160}); // TODO: Fix this hardcoded value
+  overflow: hidden;
+  padding-block-end: var(--sp-l);
+  overflow-y: auto;
+  padding-inline: var(--sp-m);
+}
+
+.viewer-code-block {
+  block-size: calc(100vh - #{px2rem(108)}); // TODO: Fix this hardcoded value
+}
+
+// A full-width DS button does not center its label on its own.
+.download-button {
+  justify-content: center;
+  inline-size: 100%;
+  margin: var(--sp-s) 0;
+}
+
+.code-block {
+  // TODO: No exact DS typography match found: the DS code-font names
+  // "Roboto Mono", the app loads it as "robotomono".
+  // Closest match: code-font.
+  font-family: "robotomono", monospace;
+  font-size: px2rem(12);
+  font-weight: 400;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 0;
+  padding: 0 var(--sp-xs) var(--sp-s) 0;
+
+  // The highlighted code markup has no class of its own.
+  pre {
+    border-radius: $br-8;
+    padding: var(--sp-l);
+    overflow: auto;
+    block-size: 100%;
+  }
+
+  // Overrides background setted in the theme
+  :global(.hljs) {
+    background: var(--color-background-tertiary);
+  }
+
+  &.collapsed {
+    block-size: initial;
+  }
+}
+
+.code-row-lang {
+  display: grid;
+  grid-template-columns: $sz-12 1fr auto;
+  gap: var(--sp-xs);
+  inline-size: 100%;
+}
+
+.code-lang {
+  @include use-typography("headline-small");
+
+  display: flex;
+  align-items: center;
+}
+
+.action-btns {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--sp-xs);
+}
+
+.css-copy-btn,
+.html-copy-btn {
+  @extend %button-tertiary;
+
+  block-size: $sz-32;
+  inline-size: $sz-28;
+
+  svg {
+    @extend %button-icon;
+
+    stroke: var(--color-foreground-secondary);
+  }
+}
+
+.code-lang-options {
+  max-inline-size: px2rem(108);
+}
+
+.code-lang-select {
+  @include use-typography("headline-small");
+
+  inline-size: px2rem(72);
+  border: $b-1 solid transparent;
+  background-color: transparent;
+  color: var(--color-foreground-secondary);
+}
+
+.code-lang-option {
+  @include use-typography("headline-small");
+
+  inline-size: px2rem(72);
+  block-size: $sz-32;
+  padding: var(--sp-s);
+  color: var(--color-foreground-secondary);
+}
+
+.code-row-display {
+  flex: 1;
+  min-block-size: 0;
+  overflow: hidden;
+  padding-block-end: var(--sp-s);
+}
+
+// A disclosure toggle in a 12px column, not a DS button.
+.toggle-btn {
+  --toggle-btn-foreground-color: var(--color-foreground-secondary);
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--toggle-btn-foreground-color);
+
+  &:hover {
+    --toggle-btn-foreground-color: var(--color-foreground-primary);
+  }
+}
+
+.collapsabled-icon {
+  flex-shrink: 0;
+}

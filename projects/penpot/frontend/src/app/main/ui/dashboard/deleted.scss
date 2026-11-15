@@ -1,0 +1,126 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "dashboard/common/header";
+@use "ds/typography.scss" as *;
+@use "ds/spacing.scss" as *;
+@use "ds/z-index.scss" as *;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.dashboard-container {
+  flex: 1 0 0;
+  inline-size: 100%;
+  margin-inline-end: var(--sp-l);
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+  overflow-y: auto;
+  padding-block-end: var(--sp-xxxl);
+}
+
+.deleted-info-content {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-s) var(--sp-xxl) var(--sp-s) var(--sp-xxl);
+}
+
+.deleted-info {
+  display: block;
+  color: var(--color-foreground-secondary);
+
+  @include use-typography("body-large");
+
+  line-height: 0.8;
+  block-size: var(--sp-xl);
+}
+
+.info-text-highlight {
+  color: var(--color-accent-primary);
+}
+
+.deleted-options {
+  display: flex;
+  gap: px2rem(5);
+  flex-shrink: 0;
+}
+
+.nav {
+  background: var(--color-background-default);
+  padding: var(--sp-xxl) var(--sp-xxl) var(--sp-s) var(--sp-xxl);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-index-panels);
+}
+
+.nav-inside {
+  border-block-end: $b-1 solid var(--color-background-quaternary);
+  display: flex;
+  gap: var(--sp-l);
+  justify-content: space-between;
+}
+
+.nav-option {
+  color: var(--color-foreground-secondary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: $b-1 solid transparent;
+  cursor: pointer;
+}
+
+.selected {
+  color: var(--color-foreground-primary);
+  border-block-end: $b-1 solid var(--color-foreground-primary);
+}
+
+.project {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-s);
+  inline-size: 99%;
+  max-block-size: $sz-40;
+  padding: var(--sp-s) var(--sp-s) var(--sp-s) var(--sp-l);
+  margin-block-start: var(--sp-l);
+  border-radius: $br-4;
+}
+
+.project-name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  inline-size: 100%;
+  min-block-size: var(--sp-xxxl);
+  margin-inline-start: var(--sp-s);
+}
+
+.project-name {
+  @include use-typography("body-large");
+
+  inline-size: fit-content;
+  margin-inline-end: var(--sp-m);
+  line-height: 0.8;
+  color: var(--color-foreground-primary);
+  block-size: var(--sp-l);
+}
+
+.project-actions {
+  display: flex;
+  opacity: var(--actions-opacity);
+  margin-inline-start: var(--sp-xxxl);
+}
+
+.options-btn {
+  margin: 0 var(--sp-s);
+}
+
+.info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-s);
+}

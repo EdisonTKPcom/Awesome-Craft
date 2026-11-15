@@ -1,0 +1,157 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_sizes.scss" as *;
+@use "ds/_borders.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+// refactor/ stays for the dropdown placeholders (%dropdown-wrapper,
+// %dropdown-element-base), which move with the menus group.
+@use "refactor/common-refactor.scss" as deprecated;
+
+.comments-section {
+  position: relative;
+  background-color: var(--color-background-primary);
+  display: grid;
+  grid-template-rows: $sz-40 $sz-48 1fr;
+}
+
+.from-viewer {
+  padding: 0 var(--sp-s);
+}
+
+.comments-title {
+  margin: var(--sp-s) var(--sp-s) 0 var(--sp-s);
+}
+
+.mode-dropdown-wrapper {
+  @include use-typography("body-small");
+
+  --mode-dropdown-bg-color: var(--color-background-tertiary);
+
+  border: none;
+  align-items: center;
+  color: var(--color-foreground-primary);
+  background-color: var(--mode-dropdown-bg-color);
+  display: flex;
+  inline-size: 100%;
+  max-inline-size: px2rem(256);
+  block-size: $sz-32;
+  padding: var(--sp-s);
+  border-radius: $br-8;
+  margin: var(--sp-l) auto 0 auto;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    --mode-dropdown-bg-color: var(--color-background-quaternary);
+  }
+}
+
+.mode-label {
+  padding-inline-end: var(--sp-s);
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.arrow-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: $sz-24;
+  inline-size: $sz-24;
+
+  .arrow-svg {
+    flex-shrink: 0;
+    color: var(--color-foreground-secondary);
+  }
+}
+
+.comment-mode-dropdown {
+  @extend %dropdown-wrapper;
+
+  inset-block-start: px2rem(92);
+  inset-inline-start: var(--sp-m);
+  max-inline-size: px2rem(256);
+  inline-size: 100%;
+}
+
+.viewer-dropdown {
+  inset-inline-start: var(--sp-s);
+}
+
+.dropdown-item {
+  @extend %dropdown-element-base;
+
+  justify-content: space-between;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: $sz-24;
+    inline-size: $sz-24;
+
+    // %dropdown-element-base styles any svg inside a span (12px box and a
+    // stroke color); the DS icon needs its 16px box and currentColor.
+    .tick-icon {
+      flex-shrink: 0;
+      inline-size: $sz-16;
+      block-size: $sz-16;
+      stroke: currentcolor;
+      color: transparent;
+    }
+  }
+
+  .label {
+    @include use-typography("body-small");
+  }
+
+  &:hover {
+    .tick-icon {
+      color: transparent;
+    }
+  }
+
+  &.selected {
+    .label {
+      color: var(--color-foreground-primary);
+    }
+
+    .tick-icon {
+      color: var(--color-foreground-primary);
+    }
+  }
+}
+
+.separator {
+  position: relative;
+  block-size: var(--sp-xs);
+  inline-size: calc(100% + var(--sp-s));
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+  inset-inline-start: calc(-1 * var(--sp-xs));
+  margin-block-start: var(--sp-s);
+}
+
+.comments-section-content {
+  block-size: 100%;
+  overflow-y: auto;
+}
+
+.thread-groups {
+  display: flex;
+  flex-direction: column;
+}
+
+.thread-group-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xxxl);
+  margin: var(--sp-xxxl) auto;
+  inline-size: $sz-200;
+}

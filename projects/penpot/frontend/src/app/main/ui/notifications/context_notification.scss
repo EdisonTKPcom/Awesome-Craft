@@ -1,0 +1,86 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/typography.scss" as *;
+
+.context-notification {
+  --context-notification-bg-color: var(--color-background-primary);
+  --context-notification-fg-color: var(--color-foreground-primary);
+  --context-notification-icon-color: var(--color-foreground-primary);
+  --context-notification-border-color: var(--color-background-quaternary);
+
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: $sz-16 1fr;
+  gap: var(--sp-s);
+  min-block-size: $sz-32;
+  block-size: fit-content;
+  inline-size: 100%;
+  padding: var(--sp-s);
+  border: $b-1 solid var(--context-notification-border-color);
+  border-radius: $br-8;
+  background-color: var(--context-notification-bg-color);
+}
+
+.warning {
+  --context-notification-bg-color: var(--color-background-warning);
+  --context-notification-fg-color: var(--color-foreground-primary);
+  --context-notification-icon-color: var(--color-accent-warning);
+  --context-notification-border-color: var(--color-accent-warning);
+}
+
+.success {
+  --context-notification-bg-color: var(--color-background-success);
+  --context-notification-fg-color: var(--color-foreground-primary);
+  --context-notification-icon-color: var(--color-accent-success);
+  --context-notification-border-color: var(--color-accent-success);
+}
+
+.info {
+  --context-notification-bg-color: var(--color-background-info);
+  --context-notification-fg-color: var(--color-foreground-primary);
+  --context-notification-icon-color: var(--color-accent-info);
+  --context-notification-border-color: var(--color-accent-info);
+}
+
+.error {
+  --context-notification-bg-color: var(--color-background-error);
+  --context-notification-fg-color: var(--color-foreground-primary);
+  --context-notification-icon-color: var(--color-accent-error);
+  --context-notification-border-color: var(--color-accent-error);
+}
+
+.icon {
+  flex-shrink: 0;
+  align-self: self-start;
+  color: var(--context-notification-icon-color);
+}
+
+.context-text {
+  @include use-typography("body-small");
+
+  align-self: center;
+  color: var(--context-notification-fg-color);
+  margin: auto 0;
+}
+
+// The second rule only applies when the element receives embedded
+// links within the content by means of the dangerouslySetInnerHTML.
+// Only in this case the contain-html class will be used.
+
+.link,
+.contain-html .context-text a {
+  @include use-typography("body-small");
+
+  align-self: center;
+  display: inline;
+  text-align: start;
+  block-size: $sz-16;
+  margin: 0;
+  color: var(--color-accent-primary);
+}

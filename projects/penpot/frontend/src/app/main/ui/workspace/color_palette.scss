@@ -1,0 +1,133 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.color-palette {
+  block-size: 100%;
+  display: flex;
+}
+
+.palette-search,
+.palette-search-collapsed {
+  display: flex;
+  align-items: center;
+  padding-inline: var(--sp-xs);
+}
+
+.palette-search {
+  gap: var(--sp-xs);
+  inline-size: $sz-192;
+  min-inline-size: $sz-192;
+}
+
+.palette-search-collapsed {
+  inline-size: $sz-32;
+  min-inline-size: $sz-32;
+}
+
+// Raw buttons on purpose: full-height scroll arrows with a fade, not DS
+// button sizes.
+.left-arrow,
+.right-arrow {
+  --arrow-foreground-color: var(--color-foreground-secondary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  block-size: 100%;
+  inline-size: $sz-24;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--arrow-foreground-color);
+
+  // Above the color list, which is positioned and comes after the left
+  // arrow, so the fade covers the colors that scroll under it.
+  z-index: 5;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset-block-end: 0;
+    inset-inline-start: calc(-1 * px2rem(80));
+    block-size: 100%;
+    inline-size: px2rem(80);
+    background-image: linear-gradient(to left, var(--color-background-primary) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    --arrow-foreground-color: var(--color-accent-primary);
+  }
+
+  &:disabled {
+    --arrow-foreground-color: var(--color-foreground-disabled);
+
+    &::after {
+      background-image: none;
+    }
+  }
+}
+
+.left-arrow {
+  &::after {
+    inset-inline-start: $sz-24;
+    background-image: linear-gradient(to right, var(--color-background-primary) 0%, transparent 100%);
+  }
+
+  &:disabled::after {
+    background-image: none;
+  }
+
+  .arrow-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.color-palette-content {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.color-palette-inside {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--color-cell-width);
+  gap: var(--sp-s);
+}
+
+.color-cell {
+  appearance: none;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  block-size: 100%;
+
+  &.no-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: $sz-32;
+  }
+}
+
+.color-palette-empty {
+  @include use-typography("body-small");
+
+  color: var(--color-foreground-secondary);
+}

@@ -1,0 +1,79 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/typography.scss" as t;
+@use "ds/_utils.scss" as *;
+
+.shape-info {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+
+  @include t.use-typography("body-small");
+
+  user-select: text;
+}
+
+.attrs-container {
+  padding: var(--sp-l) var(--sp-s);
+  overflow: hidden;
+}
+
+.shape-title {
+  @include t.use-typography("body-medium");
+
+  background: var(--color-background-quaternary);
+  color: var(--color-foreground-primary);
+  padding: var(--sp-s);
+  border-radius: $br-8;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.shape-name {
+  flex: 1;
+}
+
+.attrs-container-attr {
+  display: grid;
+  grid-template-columns: 25% auto;
+  padding: var(--sp-xs) 0;
+
+  &.vertical-layout {
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.shape-attrs {
+  overflow: auto;
+  block-size: calc(100% - var(--sp-s));
+  padding-block-end: var(--sp-s);
+}
+
+.shape-link {
+  color: var(--color-foreground-primary);
+  text-decoration: underline;
+}
+
+.shape-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.point-list {
+  display: flex;
+  gap: var(--sp-s);
+}
+
+.cell-container {
+  display: grid;
+  grid-template-columns: px2rem(100) 1fr;
+}

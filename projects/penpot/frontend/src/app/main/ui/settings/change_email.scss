@@ -1,0 +1,61 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// refactor/ stays for the modal placeholders (%modal-*), which move with
+// the modals refactor.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.modal-overlay {
+  @extend %modal-overlay-base;
+}
+
+.modal-container {
+  @extend %modal-container-base;
+
+  min-inline-size: px2rem(408);
+}
+
+.modal-header {
+  margin-block-end: var(--sp-xxl);
+}
+
+.modal-title {
+  @include use-typography("headline-small");
+
+  color: var(--color-foreground-primary);
+}
+
+// Tooltip wrapper of the close button: it places it in the corner.
+.modal-close-btn {
+  position: absolute;
+  inset-block-start: var(--sp-s);
+  inset-inline-end: var(--sp-xs);
+}
+
+.modal-content {
+  @include use-typography("body-small");
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xxl);
+  margin-block-end: var(--sp-xxl);
+}
+
+.fields-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.action-buttons {
+  @extend %modal-action-btns;
+}
+
+.submit-button {
+  @extend %modal-accept-btn;
+}

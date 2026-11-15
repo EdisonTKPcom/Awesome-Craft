@@ -1,0 +1,105 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.copy-button {
+  border: $b-1 solid transparent;
+  background: none;
+  cursor: pointer;
+  inline-size: 100%;
+  block-size: $sz-32;
+  border-radius: $br-8;
+  background-color: transparent;
+  box-sizing: border-box;
+
+  .icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: $sz-32;
+    min-inline-size: $sz-28;
+    inline-size: $sz-28;
+
+    .icon {
+      flex-shrink: 0;
+      color: var(--color-foreground-secondary);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-background-tertiary);
+    color: var(--color-foreground-primary);
+    border: $b-1 solid var(--color-background-tertiary);
+
+    .icon-btn .icon {
+      color: var(--color-accent-primary);
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border: $b-1 solid var(--color-accent-primary);
+    background-color: transparent;
+    color: var(--color-foreground-primary);
+
+    .icon-btn .icon {
+      color: var(--color-accent-primary);
+    }
+  }
+}
+
+.copy-wrapper {
+  position: relative;
+  min-block-size: $sz-32;
+  inline-size: 100%;
+  block-size: fit-content;
+  padding: px2rem(7) 0 px2rem(7) px2rem(7);
+  border: $b-1 solid transparent;
+  border-radius: $br-8;
+  background: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: start;
+
+  .icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    block-size: $sz-32;
+    inline-size: $sz-28;
+
+    .icon {
+      flex-shrink: 0;
+      color: var(--color-foreground-primary);
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-background-tertiary);
+    color: var(--color-foreground-primary);
+    border: $b-1 solid var(--color-background-tertiary);
+
+    .icon-btn .icon {
+      display: flex;
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border: $b-1 solid var(--color-accent-primary);
+    background-color: transparent;
+    color: var(--color-foreground-primary);
+  }
+}

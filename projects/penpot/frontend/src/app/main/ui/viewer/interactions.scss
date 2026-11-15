@@ -1,0 +1,87 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for the shared menu placeholders, which move to the DS with the
+// menus and dropdowns.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.view-options-wrapper {
+  position: relative;
+}
+
+.view-options {
+  @include use-typography("body-small");
+
+  display: flex;
+  align-items: center;
+  border: none;
+  gap: var(--sp-xs);
+  block-size: $sz-32;
+  border-radius: $br-8;
+  background-color: var(--color-background-tertiary);
+  padding: var(--sp-s);
+  cursor: pointer;
+}
+
+.dropdown-title {
+  @include use-typography("body-small");
+
+  flex-grow: 1;
+  color: var(--color-foreground-primary);
+}
+
+.label {
+  flex-grow: 1;
+  color: var(--color-foreground-secondary);
+}
+
+.dropdown {
+  @extend %menu-dropdown;
+
+  inset-inline-end: px2rem(2);
+  inset-block-start: px2rem(50);
+  inline-size: px2rem(272);
+  padding: px2rem(6);
+  max-block-size: calc(100vh - #{px2rem(150)});
+  overflow: auto;
+}
+
+.dropdown-element {
+  @extend %dropdown-element-base;
+
+  min-block-size: $sz-32;
+
+  &:hover .label {
+    color: var(--color-foreground-primary);
+  }
+}
+
+.dropdown-element.selected {
+  .label {
+    color: var(--color-foreground-primary);
+  }
+}
+
+.icon,
+.icon-dropdown {
+  flex-shrink: 0;
+  color: var(--color-foreground-secondary);
+}
+
+// breakpoint 1013px
+
+.fixed {
+  position: fixed;
+  pointer-events: none;
+
+  :global(.frame-children) g {
+    pointer-events: auto;
+  }
+}

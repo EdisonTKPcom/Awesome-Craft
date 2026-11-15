@@ -1,0 +1,152 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.history-toolbox {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-primary);
+}
+
+.history-entry-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xxxl);
+  margin: var(--sp-xxxl) auto;
+  inline-size: $sz-200;
+}
+
+.history-entries {
+  block-size: calc(100vh - #{px2rem(100)});
+  padding: var(--sp-m);
+  overflow: hidden auto;
+  font-size: px2rem(12);
+}
+
+.history-entry {
+  --entry-background-color: var(--color-background-tertiary);
+  --entry-foreground-color: var(--color-foreground-secondary);
+  --entry-border-color: transparent;
+  --entry-arrow-opacity: 0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-block-size: $sz-32;
+  margin: var(--sp-xs);
+
+  // The end padding is small because the details button leaves 6px
+  // around its 12px arrow.
+  padding: var(--sp-xs) var(--sp-xxs) var(--sp-xs) var(--sp-s);
+  border: $b-2 solid var(--entry-border-color);
+  border-radius: $br-8;
+  background-color: var(--entry-background-color);
+  cursor: pointer;
+  transition: border 0.2s;
+
+  .history-entry-summary {
+    display: flex;
+    align-items: center;
+
+    .history-entry-summary-icon {
+      display: flex;
+      color: var(--entry-foreground-color);
+    }
+
+    .history-entry-summary-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-xxs);
+
+      // The DS icon draws 12px inside a 16px box: a smaller start margin
+      // keeps the text where it was.
+      margin-inline: var(--sp-xs) var(--sp-s);
+      color: var(--color-foreground-primary);
+      min-inline-size: 0;
+    }
+
+    .history-entry-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Metadata row: short identifier, relative timestamp, and author.
+    // Plain inline layout so the literal spaces embedded in the
+    // template ("hash · time by Name") survive rendering. Issue #7660.
+    .history-entry-meta {
+      color: var(--color-foreground-secondary);
+      font-size: px2rem(10);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .history-entry-hash {
+      font-family: monospace;
+      letter-spacing: 0.03em;
+    }
+
+    .history-entry-meta-sep {
+      opacity: 0.6;
+    }
+
+    .history-entry-time {
+      white-space: nowrap;
+    }
+
+    // Author ("by <name>") — the surrounding meta row already
+    // truncates, so keep the author span as a plain inline. Issue
+    // #7660.
+    .history-entry-author {
+      white-space: nowrap;
+    }
+
+    // Tooltip wrapper of the details button, pushed to the end of the row.
+    .history-entry-summary-button-wrapper {
+      margin-inline-start: auto;
+    }
+
+    .history-entry-summary-button {
+      opacity: var(--entry-arrow-opacity);
+
+      &:focus-visible {
+        --entry-arrow-opacity: 1;
+      }
+
+      &.button-opened .history-entry-summary-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .history-entry-detail {
+    display: block;
+    padding-block-start: var(--sp-l);
+    color: var(--color-foreground-secondary);
+
+    .history-entry-details-list {
+      margin: 0;
+    }
+  }
+
+  &.disabled {
+    --entry-background-color: var(--color-background-primary);
+    --entry-border-color: var(--color-background-quaternary);
+  }
+
+  &.hover,
+  &:hover {
+    --entry-background-color: var(--color-background-quaternary);
+    --entry-foreground-color: var(--color-foreground-primary);
+    --entry-arrow-opacity: 1;
+
+    color: var(--color-foreground-primary);
+  }
+}

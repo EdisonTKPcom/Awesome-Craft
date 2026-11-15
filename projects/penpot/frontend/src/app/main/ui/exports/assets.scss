@@ -1,0 +1,332 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for the shared modal and checkbox placeholders, which move to the DS
+// with the modals and the checkboxes.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/mixins.scss" as *;
+@use "ds/typography.scss" as *;
+
+// PROGRESS WIDGET
+.export-progress-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: $sz-28;
+  block-size: $sz-28;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+// PROGRESS MODAL
+.export-progress-modal {
+  --export-modal-bg-color: var(--color-background-primary);
+  --export-modal-fg-color: var(--color-foreground-primary);
+  --export-modal-icon-color: var(--color-foreground-primary);
+  --export-modal-border-color: var(--color-background-quaternary);
+
+  position: absolute;
+  inset-inline-end: var(--sp-l);
+  inset-block-start: $sz-48;
+  display: grid;
+  grid-template-columns: $sz-24 1fr $sz-24;
+  grid-template-areas:
+    "icon text close"
+    "bar bar bar";
+  gap: var(--sp-xs) var(--sp-s);
+  padding-block-start: var(--sp-s);
+  background-color: var(--export-modal-bg-color);
+  border: $b-1 solid var(--export-modal-border-color);
+  border-radius: $br-8;
+  z-index: var(--z-index-set);
+  overflow: hidden;
+}
+
+.has-error {
+  --export-modal-bg-color: var(--color-background-error);
+  --export-modal-icon-color: var(--color-accent-error);
+  --export-modal-border-color: var(--color-accent-error);
+
+  grid-template-areas: "icon text close";
+  gap: var(--sp-s);
+  padding-block: var(--sp-s);
+}
+
+.icon {
+  grid-area: icon;
+  align-self: center;
+  margin-inline-start: var(--sp-s);
+  color: var(--export-modal-icon-color);
+}
+
+.export-progress-title {
+  @include use-typography("body-medium");
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-s);
+  grid-area: text;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  color: var(--export-modal-fg-color);
+}
+
+.progress {
+  @include use-typography("body-medium");
+
+  padding-inline-start: var(--sp-s);
+  margin: 0;
+  align-self: center;
+  color: var(--color-foreground-secondary);
+}
+
+// Link-styled text button: stays a raw button.
+.retry-btn {
+  @include use-typography("body-small");
+
+  display: inline;
+  text-align: start;
+  color: var(--color-accent-primary);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.progress-close-button {
+  margin-inline-end: var(--sp-s);
+}
+
+.progress-bar {
+  margin-block-start: 0;
+  grid-area: bar;
+}
+
+// EXPORT MODAL
+.modal-overlay {
+  @extend %modal-overlay-base;
+}
+
+.modal-container {
+  @extend %modal-container-base;
+
+  max-block-size: px2rem(800);
+}
+
+.modal-header {
+  margin-block-end: var(--sp-xxl);
+}
+
+.modal-title {
+  @include use-typography("headline-medium");
+
+  color: var(--color-foreground-primary);
+}
+
+.modal-close-btn {
+  position: absolute;
+  inset-block-start: var(--sp-s);
+  inset-inline-end: var(--sp-xs);
+}
+
+.modal-content,
+.no-selection {
+  @include use-typography("body-small");
+
+  margin-block-end: var(--sp-xxl);
+
+  .modal-link {
+    @include use-typography("body-large");
+
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-accent-primary);
+  }
+
+  .selection-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-xs);
+    block-size: $sz-32;
+    margin-block-end: var(--sp-xs);
+
+    .selection-btn {
+      @extend %input-checkbox;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      block-size: $sz-24;
+      inline-size: $sz-24;
+      padding: 0;
+      margin-inline-start: var(--sp-l);
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      span {
+        @extend %checkbox-icon;
+
+        // The DS icon draws its 12px glyph centered in a 16px box: keep that
+        // box, unshrunk, instead of the 12px the placeholder gives a legacy
+        // icon.
+        &:global(.checked) svg,
+        &:global(.intermediate) svg {
+          flex-shrink: 0;
+          inline-size: $sz-16;
+          block-size: $sz-16;
+        }
+      }
+    }
+
+    .selection-title {
+      @include use-typography("body-large");
+
+      color: var(--color-foreground-secondary);
+    }
+  }
+
+  .selection-wrapper {
+    position: relative;
+    inline-size: 100%;
+    block-size: fit-content;
+  }
+
+  .selection-shadow {
+    inline-size: 100%;
+    block-size: 100%;
+
+    &::after {
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: px2rem(50);
+      background: linear-gradient(to top, rgb(24 24 26 / 1) 0%, rgb(24 24 26 / 0) 100%);
+      content: "";
+      pointer-events: none;
+    }
+  }
+
+  .selection-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+    max-block-size: $sz-400;
+    overflow-y: auto;
+    padding-block-end: var(--sp-m);
+
+    .selection-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-xs);
+      background-color: var(--color-background-tertiary);
+      min-block-size: $sz-40;
+      border-radius: $br-8;
+
+      // A list row, not a DS button: the whole row toggles its export.
+      .selection-btn {
+        display: grid;
+        grid-template-columns: min-content auto 1fr auto auto;
+        align-items: center;
+        inline-size: 100%;
+        block-size: 10%;
+        gap: var(--sp-s);
+        padding: 0 var(--sp-l);
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        .checkbox-wrapper {
+          @extend %input-checkbox;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          block-size: $sz-24;
+          inline-size: $sz-24;
+          padding: 0;
+
+          .checkobox-tick {
+            @extend %checkbox-icon;
+
+            // The DS icon draws its 12px glyph centered in a 16px box: keep that
+            // box, unshrunk, instead of the 12px the placeholder gives a
+            // legacy icon.
+            &:global(.checked) svg,
+            &:global(.intermediate) svg {
+              flex-shrink: 0;
+              inline-size: $sz-16;
+              block-size: $sz-16;
+            }
+          }
+        }
+
+        .selection-name,
+        .selection-scale,
+        .selection-extension {
+          @include use-typography("body-large");
+          @include text-ellipsis;
+
+          color: var(--color-foreground-secondary);
+        }
+
+        .selection-name {
+          flex-grow: 1;
+          text-align: start;
+        }
+
+        .selection-scale {
+          min-inline-size: px2rem(108);
+          padding: var(--sp-m);
+        }
+
+        .selection-extension {
+          min-inline-size: px2rem(72);
+          padding: var(--sp-m);
+        }
+      }
+
+      .image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-block-size: $sz-32;
+        min-inline-size: $sz-32;
+        background-color: var(--color-static-white);
+        border-radius: $br-6;
+        margin: auto 0;
+
+        // The thumbnail markup has no class of its own.
+        img,
+        svg {
+          object-fit: contain;
+          max-block-size: $sz-40;
+        }
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-l);
+}
+
+.modal-scd-msg,
+.modal-msg {
+  @include use-typography("body-large");
+
+  color: var(--color-foreground-secondary);
+}

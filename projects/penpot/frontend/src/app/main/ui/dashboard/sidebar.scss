@@ -1,0 +1,372 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/typography.scss" as *;
+@use "ds/colors.scss" as *;
+@use "ds/spacing.scss" as *;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/z-index.scss" as *;
+@use "ds/mixins.scss" as *;
+
+// refactor/ stays for the menu placeholders (%menu-dropdown,
+// %menu-item-base) of the profile menu and its submenus.
+@use "common/refactor/common-refactor.scss" as deprecated;
+
+// SIDEBAR COMPONENT
+.dashboard-sidebar {
+  display: grid;
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 2;
+  grid-template-rows: auto 1fr auto;
+  block-size: 100%;
+  inline-size: 100%;
+  margin: 0 var(--sp-l) 0 0;
+  border-inline-end: $b-1 solid var(--color-background-quaternary);
+  background-color: var(--color-background-primary);
+}
+
+// SIDEBAR CONTENT COMPONENT
+.sidebar-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+  block-size: 100%;
+  overflow: hidden;
+}
+
+.sidebar-content {
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr;
+  gap: var(--sp-xxl);
+  flex: 1;
+  min-block-size: 0;
+  padding: 0;
+  overflow: hidden auto;
+}
+
+.sidebar-content-nitrate {
+  padding: var(--sp-m) 0 0 0;
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+}
+
+.separator {
+  block-size: var(--sp-xxs);
+  inline-size: 94%;
+  margin-inline-start: 3%;
+}
+
+.overflow-separator {
+  border-block-end: $b-1 solid var(--color-background-quaternary);
+}
+
+.sidebar-section-title {
+  @include use-typography("headline-small");
+
+  padding: 0 var(--sp-s) var(--sp-s) var(--sp-xxl);
+  color: var(--color-foreground-secondary);
+}
+
+// Sections
+.sidebar-nav {
+  margin: 0;
+  user-select: none;
+}
+
+.pinned-projects {
+  overflow-y: auto;
+}
+
+.sidebar-nav-item {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-background-secondary);
+
+    // The item labels have no class.
+    span {
+      color: var(--color-accent-primary);
+    }
+  }
+
+  &.current {
+    background-color: var(--color-background-quaternary);
+
+    .element-title {
+      color: var(--color-accent-primary);
+    }
+  }
+}
+
+// The icon has no class.
+.recent-projects svg {
+  stroke: var(--color-foreground-primary);
+}
+
+.sidebar-link {
+  display: block;
+  padding: var(--sp-s) var(--sp-s) var(--sp-s) var(--sp-xxl);
+  font-weight: 400;
+  inline-size: 100%;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.project-element {
+  padding: var(--sp-s) var(--sp-s) var(--sp-s) var(--sp-xxl);
+}
+
+.element-title {
+  @include text-ellipsis;
+
+  inline-size: px2rem(256);
+  color: var(--color-foreground-primary);
+  font-size: px2rem(14);
+}
+
+// Pinned projects
+
+.sidebar-empty-placeholder {
+  padding: var(--sp-m);
+  color: var(--color-foreground-secondary);
+  display: flex;
+  align-items: center;
+}
+
+// The DS small icon draws 12px inside a 16px box: 2px less margin on each
+// side keeps the drawing and the text where they were.
+.pin-icon {
+  flex-shrink: 0;
+  color: var(--color-foreground-secondary);
+  margin: 0 px2rem(10);
+}
+
+.empty-text {
+  font-size: px2rem(12);
+}
+
+// Search
+
+.sidebar-search {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  border: $b-1 solid transparent;
+  margin: 0 var(--sp-l);
+  border-radius: $br-8;
+  background-color: var(--color-background-tertiary);
+}
+
+.input-text {
+  @include use-typography("title-small");
+
+  block-size: $sz-40;
+  inline-size: 100%;
+  padding: $sz-6 var(--sp-m);
+  margin: 0;
+  border: transparent;
+  border-radius: $br-8;
+  background: transparent;
+  color: var(--color-foreground-primary);
+
+  &:focus,
+  &:focus-within,
+  &:focus-visible {
+    outline: none;
+    border: $b-1 solid var(--color-accent-primary);
+  }
+
+  ::placeholder {
+    color: var(--color-foreground-secondary);
+  }
+}
+
+.search-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  --sidebar-search-foreground-color: var(--color-foreground-secondary);
+
+  color: var(--sidebar-search-foreground-color);
+  position: absolute;
+  inset-inline-end: 0;
+  block-size: var(--sp-xxl);
+  inline-size: var(--sp-xxxl);
+  padding: 0 var(--sp-s);
+}
+
+.search-icon {
+  flex-shrink: 0;
+}
+
+.clear-search-btn:hover {
+  --sidebar-search-foreground-color: var(--color-accent-primary);
+}
+
+// Profile
+.profile-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: var(--sp-m) var(--sp-l);
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+  background-color: var(--color-background-tertiary);
+  cursor: pointer;
+}
+
+.profile {
+  border: none;
+  background: none;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-s);
+  cursor: pointer;
+  text-align: start;
+}
+
+.profile-fullname {
+  @include use-typography("title-small");
+  @include text-ellipsis;
+
+  align-self: center;
+  color: var(--color-foreground-primary);
+}
+
+.profile-img {
+  block-size: $sz-40;
+  inline-size: $sz-40;
+  border-radius: $br-circle;
+}
+
+.profile-dropdown {
+  @extend %menu-dropdown;
+
+  inset-inline-start: var(--sp-s);
+  inset-block-end: px2rem(72); // 72 is the height of the profile button
+  min-inline-size: calc(100% - var(--sp-s));
+
+  // TODO ADD animation fadeInUp
+}
+
+.profile-dropdown-item {
+  @extend %menu-item-base;
+  @include use-typography("body-medium");
+
+  block-size: $sz-40;
+  margin-block-end: var(--sp-xs);
+  padding: var(--sp-s);
+  padding-inline-start: var(--sp-l);
+
+  &:hover {
+    color: var(--color-foreground-primary);
+
+    .open-arrow {
+      --icon-stroke-color: var(--color-foreground-primary);
+    }
+  }
+}
+
+.profile-dropdown-item .open-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-menu {
+  @extend %menu-dropdown;
+
+  inset-inline-start: calc(#{px2rem(292)} + var(--sp-s));
+  min-inline-size: $sz-192;
+}
+
+// Each submenu is positioned via its bottom edge; the visual top lands
+// at `inset-block-end + submenu_height`. Help & Learning (3 items,
+// taller) needs the same inset as Community (2 items, shorter) so that
+// its top edge sits one row above Community — aligning with the
+// "Help & Learning" trigger row in the parent menu.
+.sub-menu.help-learning {
+  inset-block-end: $sz-120;
+}
+
+.sub-menu.community {
+  inset-block-end: $sz-120;
+}
+
+.sub-menu.about {
+  inset-block-end: $sz-24;
+}
+
+.submenu-item {
+  @extend %menu-item-base;
+  @include use-typography("body-medium");
+
+  block-size: $sz-40;
+  margin-block-end: var(--sp-xs);
+  padding-block: var(--sp-s);
+  padding-inline: var(--sp-l);
+
+  &:hover {
+    color: var(--color-foreground-primary);
+  }
+
+  &.checking {
+    color: var(--color-foreground-secondary);
+    pointer-events: none;
+
+    &:hover {
+      color: var(--color-foreground-secondary);
+      background-color: transparent;
+    }
+  }
+}
+
+.checking-icon {
+  flex-shrink: 0;
+  animation: spin-animation 1s infinite linear;
+}
+
+.submenu-separator {
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+  margin: 0;
+}
+
+.about-penpot {
+  align-items: baseline;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.menu-version {
+  @include use-typography("code-font");
+  @include text-ellipsis;
+
+  color: var(--color-foreground-secondary);
+  margin-inline-start: var(--sp-s);
+  text-transform: uppercase;
+}
+
+.profile-separator {
+  block-size: $sz-6;
+  border-block-start: $b-1 solid var(--color-background-quaternary);
+}
+
+.item-with-icon {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-s);
+}
+
+.exit-icon {
+  color: var(--color-foreground-secondary);
+}

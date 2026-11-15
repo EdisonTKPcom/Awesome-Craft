@@ -1,0 +1,77 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for %input-element and %button-icon: the inputs and their icons move
+// to the DS in their own plan.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+@use "../../../sidebar/common/sidebar.scss" as sidebar;
+
+.grid-cell-menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-l);
+  grid-column: span 8;
+  margin-block-start: var(--sp-s);
+}
+
+.grid-cell-menu {
+  @include sidebar.option-grid-structure;
+}
+
+.grid-cell-menu-title {
+  grid-column: span 8;
+  font-size: px2rem(11);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.cell-mode :global(label) {
+  padding: 0 var(--sp-m);
+}
+
+.edit-grid-btn {
+  justify-content: center;
+  inline-size: 100%;
+}
+
+.area-input {
+  @extend %input-element;
+  @include use-typography("body-small");
+
+  inline-size: 100%;
+  padding: var(--sp-s);
+}
+
+.grid-coord-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  border-radius: $br-8;
+  padding-inline-start: var(--sp-xs);
+  background-color: var(--color-background-tertiary);
+}
+
+// The legacy icon is a raw svg with no class of its own.
+.icon svg {
+  @extend %button-icon;
+
+  stroke: var(--color-foreground-secondary);
+}
+
+.coord-input {
+  @extend %input-element;
+  @include use-typography("body-small");
+
+  border-radius: 0 $br-8 $br-8 0;
+  border-inline-start: $b-1 solid var(--color-background-primary);
+}

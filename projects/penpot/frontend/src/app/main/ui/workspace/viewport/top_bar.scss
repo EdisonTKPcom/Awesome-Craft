@@ -1,0 +1,79 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/typography.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.viewport-actions,
+.viewport-actions-path {
+  pointer-events: none;
+  position: absolute;
+
+  --actions-toolbar-position-y: #{$sz-28};
+  --actions-toolbar-offset-y: #{px2rem(6)};
+
+  inset-block-start: calc(var(--actions-toolbar-position-y) + var(--actions-toolbar-offset-y));
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+
+  // TODO: No DS z-index token for this value.
+  z-index: 20;
+}
+
+.viewport-actions-path {
+  // TODO: No DS z-index token for this value.
+  z-index: 3;
+}
+
+.viewport-actions-container {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-s);
+  background: var(--color-background-primary);
+  border-radius: $br-12;
+  box-shadow: 0 0 px2rem(12) 0 var(--color-shadow-dark);
+  block-size: $sz-48;
+  padding: var(--sp-s);
+  cursor: initial;
+  pointer-events: initial;
+  min-inline-size: $sz-400;
+  border: $b-2 solid var(--color-background-quaternary);
+}
+
+.viewport-actions-title {
+  @include use-typography("body-small");
+
+  flex: 1;
+  color: var(--color-foreground-secondary);
+  padding-inline-start: var(--sp-s);
+  inline-size: max-content;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.viewport-actions-save-failed {
+  inline-size: max-content;
+  min-inline-size: min(#{$sz-400}, calc(100% - var(--sp-xl)));
+  max-inline-size: calc(100% - var(--sp-xl));
+
+  .viewport-actions-container {
+    block-size: auto;
+    min-block-size: $sz-48;
+    min-inline-size: 0;
+  }
+
+  .viewport-actions-title {
+    inline-size: auto;
+  }
+}
+
+.viewport-actions-no-rulers {
+  --actions-toolbar-position-y: 0px;
+}

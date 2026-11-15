@@ -1,0 +1,147 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/mixins.scss" as *;
+@use "ds/typography.scss" as *;
+
+.viewer-thumbnails {
+  background-color: var(--color-background-secondary);
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  // TODO: no DS z-index token for 10; it keeps the panel above the
+  // viewer content (z-index 2).
+  z-index: 10;
+}
+
+.expanded {
+  grid-row: 1 / span 2;
+}
+
+.thumbnails-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  block-size: $sz-32;
+  margin: var(--sp-xxl) var(--sp-xxl) 0 var(--sp-xxl);
+}
+
+.counter {
+  @include use-typography("body-small");
+
+  color: var(--color-foreground-secondary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.thumbnails-content {
+  display: grid;
+  grid-template-columns: $sz-40 auto $sz-40;
+  grid-template-rows: auto;
+}
+
+.thumbnails-list-expanded {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+// Tooltip wrappers of the scroll buttons: they take the grid cell.
+.right-scroll-handler,
+.left-scroll-handler {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+  margin: auto 0;
+  z-index: 10;
+}
+
+.left-scroll-handler {
+  grid-column: 1 / span 1;
+}
+
+// The scroll buttons are as tall as a thumbnail row and only show on hover.
+.thumbnails-content .scroll-handler {
+  --button-height: #{px2rem(60)};
+
+  opacity: 0;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.thumbnails-list {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.thumbnails-list-inside {
+  display: flex;
+  position: relative;
+}
+
+// A list item, not a DS button.
+.thumbnail-item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-l);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.thumbnail-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: px2rem(132);
+  min-block-size: px2rem(132);
+  block-size: px2rem(132);
+  padding: var(--sp-xs);
+
+  // The board preview markup has no class of its own.
+  svg {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  &.selected {
+    background-color: var(--color-accent-primary-muted);
+    border-radius: $br-8;
+  }
+
+  &:hover {
+    border: $b-1 solid var(--color-accent-primary);
+    border-radius: $br-8;
+  }
+}
+
+.thumbnail-info {
+  @include use-typography("body-small");
+  @include text-ellipsis;
+
+  text-align: center;
+  color: var(--color-foreground-secondary);
+  padding: var(--sp-s) 0;
+  inline-size: 100%;
+  max-inline-size: px2rem(132);
+}

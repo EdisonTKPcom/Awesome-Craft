@@ -1,0 +1,294 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for the shared menu placeholders, which move to the DS with the
+// menus and dropdowns.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/mixins.scss" as *;
+@use "ds/typography.scss" as *;
+
+.viewer-header {
+  position: absolute;
+  inset-block-start: 0;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: space-between;
+  align-items: center;
+  block-size: $sz-48;
+  inline-size: 100vw;
+  padding: var(--sp-s) var(--sp-m);
+  transition: transform 400ms ease 300ms;
+  background-color: var(--color-background-primary);
+}
+
+// FILE NAVIGATION
+
+.nav-zone {
+  display: flex;
+  justify-content: flex-start;
+  flex-basis: min-content;
+  inline-size: 100%;
+  gap: var(--sp-m);
+}
+
+.home-link {
+  padding: 0;
+  display: grid;
+  place-content: center;
+}
+
+.logo-icon {
+  inline-size: $sz-28;
+  block-size: $sz-28;
+  fill: var(--color-foreground-primary);
+}
+
+.sitemap-zone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  position: relative;
+  inline-size: 100%;
+}
+
+.project-name {
+  @include use-typography("headline-small");
+
+  color: var(--color-foreground-secondary);
+}
+
+.sitemap-text {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.breadcrumb {
+  @include use-typography("body-small");
+
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  color: var(--color-foreground-secondary);
+}
+
+// Text and arrow that open the page menu: not a DS button.
+.breadcrumb-btn {
+  @include use-typography("body-small");
+
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.breadcrumb-text {
+  @include text-ellipsis;
+
+  max-inline-size: 12vw; // This is a fallback
+  max-inline-size: 12cqw; // This is a unit refered to container
+}
+
+.icon,
+.icon-check {
+  flex-shrink: 0;
+  color: var(--color-foreground-secondary);
+}
+
+.dropdown-sitemap {
+  @extend %menu-dropdown;
+
+  inset-inline-start: 0;
+  inset-block-start: px2rem(50);
+  inline-size: px2rem(272);
+  padding: px2rem(6);
+}
+
+.dropdown-element {
+  @extend %dropdown-element-base;
+
+  &:hover .label {
+    color: var(--color-foreground-primary);
+  }
+
+  // The current page.
+  &.selected {
+    outline: none;
+    border-color: var(--color-background-quaternary);
+    background-color: var(--color-background-quaternary);
+    color: var(--color-accent-primary);
+  }
+}
+
+// Board name that toggles the thumbnails: not a DS button.
+.current-frame {
+  @include use-typography("body-small");
+
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  flex-grow: 1;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-foreground-primary);
+  cursor: pointer;
+
+  .icon {
+    color: var(--color-foreground-primary);
+  }
+}
+
+.frame-name {
+  @include text-ellipsis;
+
+  max-inline-size: 17vw; // This is a fallback
+  max-inline-size: 17cqw; // This is a unit refered to container
+}
+
+// SECTION BUTTONS
+.mode-zone {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  block-size: 100%;
+}
+
+// OPTION AREA
+.options-zone {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: flex-end;
+  gap: var(--sp-s);
+
+  // TODO: no DS z-index token for 10; it keeps the menus above the
+  // viewer content.
+  z-index: 10;
+}
+
+.view-options {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.share-btn {
+  min-inline-size: px2rem(72);
+  margin-inline-start: var(--sp-xs);
+}
+
+// ZOOM WIDGET
+.zoom-widget-wrapper {
+  display: flex;
+}
+
+.zoom-widget {
+  --zoom-widget-foreground-color: var(--color-foreground-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: $sz-28;
+  min-inline-size: $sz-64;
+  padding: 0;
+  border: none;
+  border-radius: $br-8;
+  background: none;
+  cursor: pointer;
+
+  .label {
+    @include use-typography("body-small");
+
+    color: var(--zoom-widget-foreground-color);
+  }
+
+  &:hover,
+  &.selected {
+    --zoom-widget-foreground-color: var(--color-foreground-primary);
+  }
+}
+
+.dropdown {
+  @extend %menu-dropdown;
+
+  inset-inline-end: px2rem(2);
+  inset-block-start: px2rem(50);
+  inline-size: px2rem(272);
+}
+
+.basic-zoom-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: px2rem(6);
+  cursor: auto;
+}
+
+.zoom-btns {
+  display: flex;
+}
+
+.zoom-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 100%;
+  min-inline-size: $sz-64;
+  padding: 0;
+  margin: 0 px2rem(2);
+  color: var(--color-foreground-primary);
+}
+
+.zoom-option {
+  @extend %menu-item-base;
+
+  .shortcuts {
+    @extend %shortcut-base;
+
+    .shortcut-key {
+      @extend %shortcut-key-base;
+    }
+  }
+
+  &:hover {
+    color: var(--color-foreground-primary);
+
+    .shortcuts {
+      .shortcut-key {
+        color: var(--color-foreground-primary);
+      }
+    }
+  }
+}
+
+/** FULLSCREEN */
+[data-fullscreen="true"] .viewer-header::after {
+  content: " ";
+  position: absolute;
+  inline-size: 100%;
+  block-size: $sz-48;
+  inset-inline-start: 0;
+  inset-block-start: $sz-48;
+}
+
+[data-fullscreen="true"] .viewer-header {
+  transform: translateY(-#{$sz-48});
+}
+
+[data-force-visible="true"] .viewer-header,
+[data-fullscreen="true"] .viewer-header:hover {
+  transform: translateY(0);
+}

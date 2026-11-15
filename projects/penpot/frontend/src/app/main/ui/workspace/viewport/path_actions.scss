@@ -1,0 +1,98 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+
+.sub-actions {
+  cursor: initial;
+  pointer-events: initial;
+  position: absolute;
+
+  // top and height stay physical: the transition below names them.
+  top: var(--sp-xl);
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  // Keep the bar stable as actions change.
+  inline-size: $sz-430;
+  height: $sz-48;
+  padding: var(--sp-s);
+  border-radius: $br-8;
+  gap: var(--sp-s);
+  border: $b-2 solid var(--color-background-quaternary);
+  z-index: var(--z-index-panels);
+  background-color: var(--color-background-primary);
+  transition:
+    top 0.3s,
+    height 0.3s,
+    opacity 0.3s;
+}
+
+.sub-actions-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+// Pin the snap toggle to the right.
+.snap-group {
+  margin-inline-start: auto;
+}
+
+.separator {
+  flex-shrink: 0;
+  inline-size: $sz-1;
+  block-size: $sz-24;
+  margin: 0 var(--sp-xs);
+  background-color: var(--color-background-quaternary);
+}
+
+.handler-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.handler-popover {
+  position: absolute;
+  inset-block-start: calc(100% + var(--sp-s));
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  padding: var(--sp-xs);
+  gap: var(--sp-xxs);
+  border-radius: $br-8;
+  border: $b-2 solid var(--color-background-quaternary);
+  background-color: var(--color-background-primary);
+  z-index: var(--z-index-dropdown);
+
+  // Hidden until the flyout opens.
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 80ms ease-out,
+    visibility 80ms linear;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.topbar-btn {
+  flex-shrink: 0;
+  margin: 0 var(--sp-xxs);
+}

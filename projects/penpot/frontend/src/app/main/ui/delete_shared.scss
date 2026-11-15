@@ -1,0 +1,67 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// refactor/ stays for the modal placeholders (%modal-*), which move with
+// the modals refactor.
+@use "refactor/basic-rules.scss" as *;
+@use "ds/typography.scss" as *;
+
+.modal-overlay {
+  @extend %modal-overlay-base;
+}
+
+.modal-container {
+  @extend %modal-container-base;
+
+  display: grid;
+  gap: var(--sp-xxl);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.modal-title {
+  @include use-typography("headline-medium");
+
+  color: var(--color-foreground-primary);
+}
+
+// Tooltip wrapper of the close button: it places it in the corner.
+.modal-close-btn {
+  position: absolute;
+  inset-block-start: var(--sp-s);
+  inset-inline-end: var(--sp-xs);
+}
+
+.modal-content {
+  @include use-typography("body-small");
+
+  display: grid;
+  gap: var(--sp-s);
+}
+
+.element-list {
+  @include use-typography("body-large");
+
+  color: var(--color-foreground-secondary);
+  overflow-y: auto;
+  margin-block: 0;
+}
+
+.action-buttons {
+  @extend %modal-action-btns;
+}
+
+.modal-scd-msg {
+  margin-block: 0;
+}
+
+.modal-scd-msg,
+.modal-subtitle,
+.modal-msg {
+  @include use-typography("body-large");
+
+  color: var(--color-foreground-secondary);
+  line-height: 1.5;
+}

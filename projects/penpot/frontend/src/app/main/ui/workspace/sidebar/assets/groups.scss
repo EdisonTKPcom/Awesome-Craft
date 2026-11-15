@@ -1,0 +1,94 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// refactor/ stays for the modal placeholders (%modal-*), which move with
+// the modals refactor, and the input placeholder (%input-with-label).
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/mixins.scss" as *;
+@use "ds/typography.scss" as *;
+
+.group-title-wrapper {
+  inline-size: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+
+    .title-menu {
+      visibility: visible;
+    }
+  }
+}
+
+.group-title-wrapper > :first-child {
+  flex: 1 1 auto;
+}
+
+.title-menu {
+  display: flex;
+  visibility: hidden;
+}
+
+.group-title {
+  padding-inline-start: var(--sp-xs);
+}
+
+.pre-path {
+  margin-inline-start: var(--sp-xxs);
+  text-transform: initial;
+  color: var(--color-foreground-secondary);
+}
+
+.path {
+  @include text-ellipsis;
+
+  margin-inline-start: var(--sp-xxs);
+  text-transform: initial;
+  color: var(--color-foreground-primary);
+}
+
+.modal-overlay {
+  @extend %modal-overlay-base;
+}
+
+.modal-container {
+  @extend %modal-container-base;
+}
+
+.modal-header {
+  margin-block-end: var(--sp-xxl);
+}
+
+.modal-title {
+  @include use-typography("headline-small");
+
+  color: var(--color-foreground-primary);
+}
+
+// Tooltip wrapper of the close button: it places it in the corner.
+.modal-close-btn {
+  position: absolute;
+  inset-block-start: var(--sp-s);
+  inset-inline-end: var(--sp-xs);
+}
+
+.modal-content {
+  @include use-typography("body-small");
+
+  margin-block-end: var(--sp-xxl);
+}
+
+.input-wrapper {
+  @extend %input-with-label;
+  @include use-typography("body-small");
+
+  margin-block-end: var(--sp-s);
+}
+
+.action-buttons {
+  @extend %modal-action-btns;
+}

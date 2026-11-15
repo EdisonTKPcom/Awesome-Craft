@@ -1,0 +1,63 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for the shared modal and labeled input placeholders, which move to
+// the DS with the modals and the inputs.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.modal-overlay {
+  @extend %modal-overlay-base;
+}
+
+.modal-container {
+  @extend %modal-container-base;
+
+  min-inline-size: px2rem(408);
+}
+
+.modal-header {
+  margin-block-end: var(--sp-xxl);
+}
+
+.modal-title {
+  @include use-typography("headline-medium");
+
+  color: var(--color-foreground-primary);
+}
+
+.modal-close-btn {
+  position: absolute;
+  inset-block-start: var(--sp-s);
+  inset-inline-end: var(--sp-xs);
+}
+
+.modal-content {
+  @include use-typography("body-large");
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xxl);
+  margin-block-end: var(--sp-xxl);
+}
+
+.input-wrapper {
+  @extend %input-with-label;
+  @include use-typography("body-small");
+
+  // Nested so it wins over the label rule of %input-with-label.
+  .modal-msg {
+    text-transform: none;
+  }
+}
+
+.modal-msg {
+  @include use-typography("body-large");
+
+  color: var(--color-foreground-secondary);
+  line-height: 1.5;
+}

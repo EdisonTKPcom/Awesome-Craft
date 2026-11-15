@@ -1,0 +1,64 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_utils.scss" as *;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/typography.scss" as *;
+
+.element-name {
+  --element-name-color: var(--context-hover-color, var(--color-foreground-secondary));
+  --element-name-opacity: var(--context-hover-opacity, 0.7);
+
+  @include use-typography("body-small");
+
+  display: block;
+  max-inline-size: 99%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--element-name-color);
+  flex-grow: 1;
+  block-size: 100%;
+  align-content: center;
+  min-inline-size: var(--sp-xl);
+
+  &.selected {
+    --element-name-color: var(--color-accent-primary);
+  }
+
+  &.type-comp {
+    --element-name-color: var(--context-hover-color, var(--color-accent-secondary));
+  }
+
+  &.hidden {
+    opacity: var(--element-name-opacity);
+  }
+}
+
+// The rename input also carries .element-name, so it takes its typography,
+// ellipsis and color from there.
+.element-name-input {
+  --element-name-color: var(--color-foreground-secondary);
+
+  background: none;
+  outline: none;
+  flex-grow: 1;
+  block-size: $sz-28;
+  max-inline-size: calc(var(--parent-size) - (var(--depth) * var(--layer-indentation-size)));
+  margin: 0;
+  padding-inline-start: px2rem(6);
+  border-radius: $br-8;
+  border: $b-1 solid var(--color-accent-primary);
+
+  &.selected {
+    min-inline-size: px2rem(100);
+  }
+}
+
+.element-name-touched {
+  color: var(--color-accent-secondary);
+}

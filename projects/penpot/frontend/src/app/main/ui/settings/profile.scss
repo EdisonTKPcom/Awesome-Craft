@@ -1,0 +1,172 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+// Only for %button-primary: the save button is the shared forms submit
+// button, which moves to the DS with the forms component.
+@use "refactor/common-refactor.scss" as deprecated;
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.dashboard-settings {
+  display: flex;
+  inline-size: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+// "Change email" and "Want to remove your account?" open modals, so they
+// are buttons that keep the look of a text link.
+.link {
+  @include use-typography("body-medium");
+
+  color: var(--color-accent-primary);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: $sz-500;
+  inline-size: px2rem(580);
+  margin-block: px2rem(80) px2rem(120);
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.page-title {
+  color: var(--color-foreground-primary);
+  display: flex;
+  align-items: center;
+  margin-block: var(--sp-l);
+  margin-inline: 0;
+}
+
+.fields-row {
+  --input-height: #{$sz-40};
+
+  margin-block-end: var(--sp-xl);
+  flex-direction: column;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-start: var(--sp-m);
+}
+
+.links {
+  margin-block-start: var(--sp-m);
+}
+
+.avatar-form {
+  display: flex;
+  flex-direction: column;
+  inline-size: px2rem(148);
+  block-size: px2rem(148);
+  margin-block: var(--sp-l);
+  margin-inline: 0;
+}
+
+.avatar-image {
+  border-radius: $br-circle;
+  flex-shrink: 0;
+  block-size: 100%;
+  margin-inline-end: var(--sp-l);
+  inline-size: 100%;
+}
+
+.image-change-field {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+
+  &:hover {
+    .update-overlay {
+      opacity: 0.8;
+    }
+
+    .delete-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.update-overlay {
+  @include use-typography("title-large");
+
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  border: none;
+  border-radius: $br-circle;
+  color: var(--color-foreground-primary);
+
+  // Draws the label in the middle of the circle.
+  line-height: 6;
+  text-align: center;
+  background: var(--color-accent-tertiary);
+
+  // The button centers its 144px line in the 148px circle; the bottom
+  // padding keeps the label where the old span drew it.
+  padding: 0 0 var(--sp-xs);
+  z-index: var(--z-index-set);
+
+  &:focus-visible {
+    opacity: 0.8;
+  }
+}
+
+.delete-overlay {
+  --delete-overlay-background-color: var(--color-background-primary);
+  --delete-overlay-foreground-color: var(--color-foreground-primary);
+
+  position: absolute;
+  inset-block-start: var(--sp-xs);
+  inset-inline-end: var(--sp-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: $sz-32;
+  block-size: $sz-32;
+  padding: 0;
+  border: none;
+  border-radius: $br-circle;
+  background: var(--delete-overlay-background-color);
+  color: var(--delete-overlay-foreground-color);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  z-index: calc(var(--z-index-set) + 1);
+
+  &:hover {
+    --delete-overlay-background-color: var(--color-background-quaternary);
+    --delete-overlay-foreground-color: var(--color-accent-primary);
+  }
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: px2rem(368);
+  inline-size: 100%;
+}
+
+.btn-primary {
+  @extend %button-primary;
+
+  block-size: $sz-32;
+}

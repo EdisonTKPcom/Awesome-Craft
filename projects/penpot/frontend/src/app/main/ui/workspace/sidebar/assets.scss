@@ -1,0 +1,100 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+
+.assets-bar {
+  display: grid;
+  grid-auto-rows: max-content;
+
+  // TODO: ugly hack :( Fix this! we shouldn't be hardcoding this height
+  block-size: calc(100vh - #{px2rem(92)});
+  scrollbar-gutter: stable;
+  overflow-y: auto;
+  padding-block-start: var(--sp-s);
+}
+
+// A DS button keeps its label at the start when it grows.
+.libraries-button {
+  inline-size: 100%;
+  margin-block-end: var(--sp-xs);
+  justify-content: center;
+}
+
+.section-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  cursor: pointer;
+  block-size: $sz-32;
+  inline-size: $sz-32;
+  margin: 0;
+  border: $b-1 solid var(--color-background-tertiary);
+  border-radius: $br-8 px2rem(2) px2rem(2) $br-8;
+  background-color: var(--color-background-tertiary);
+
+  .section-icon {
+    flex-shrink: 0;
+    color: var(--color-foreground-secondary);
+  }
+
+  // Before :focus and :hover, as the legacy placeholder was: the focus
+  // border wins over the opened state.
+  &.opened {
+    outline: none;
+    border-color: var(--color-background-quaternary);
+    background-color: var(--color-background-quaternary);
+    color: var(--color-accent-primary);
+
+    .section-icon {
+      color: var(--color-accent-primary);
+    }
+  }
+
+  &:focus {
+    border: $b-1 solid var(--color-accent-primary);
+    outline: 0;
+    background-color: var(--color-background-tertiary);
+    color: var(--color-foreground-primary);
+
+    .section-icon {
+      background-color: var(--color-background-tertiary);
+    }
+  }
+
+  &:hover {
+    border: $b-1 solid var(--color-background-quaternary);
+    background-color: var(--color-background-quaternary);
+
+    .section-icon {
+      background-color: var(--color-background-quaternary);
+      color: var(--color-accent-primary);
+    }
+
+    &:focus {
+      border: $b-1 solid var(--color-accent-primary);
+      outline: 0;
+      background-color: var(--color-background-tertiary);
+      color: var(--color-foreground-primary);
+
+      .section-icon {
+        background-color: var(--color-background-tertiary);
+      }
+    }
+  }
+}
+
+.assets-header {
+  padding: 0 0 var(--sp-xxl) var(--sp-m);
+}
+
+.search-wrapper {
+  display: flex;
+  gap: var(--sp-xs);
+}

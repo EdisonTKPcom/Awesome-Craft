@@ -1,0 +1,152 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+// Copyright (c) KALEIDOS SUBSIDIARY SL
+
+@use "ds/_borders.scss" as *;
+@use "ds/_sizes.scss" as *;
+@use "ds/_utils.scss" as *;
+@use "ds/typography.scss" as *;
+
+.workspace-header-left {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-m) var(--sp-m) var(--sp-s) var(--sp-m);
+  min-block-size: px2rem(52);
+}
+
+.main-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: $sz-32;
+  block-size: $sz-32;
+  min-block-size: $sz-32;
+  margin-inline-end: var(--sp-xs);
+}
+
+.logo {
+  inline-size: $sz-32;
+  block-size: $sz-32;
+  fill: var(--color-foreground-primary);
+}
+
+.project-tree {
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-inline-size: 0;
+  block-size: $sz-32;
+  min-block-size: $sz-32;
+}
+
+.project-name,
+.file-name {
+  display: block;
+  max-inline-size: 99%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  block-size: $sz-16;
+  inline-size: 100%;
+  padding-block-end: var(--sp-xxs);
+  cursor: pointer;
+}
+
+.project-name {
+  @include use-typography("headline-small");
+
+  color: var(--color-foreground-secondary);
+}
+
+.file-name {
+  @include use-typography("title-small");
+
+  color: var(--color-foreground-primary);
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.file-name-label {
+  display: block;
+  max-inline-size: 99%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-name-input {
+  @include use-typography("title-small");
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  border-radius: $br-4;
+  background-color: var(--color-background-tertiary);
+  color: var(--color-foreground-secondary);
+  white-space: break-spaces;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.shared-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: $sz-16;
+  block-size: $sz-32;
+  margin-inline-end: var(--sp-xs);
+}
+
+.shared-badge-icon {
+  color: var(--color-foreground-secondary);
+}
+
+.status-notification {
+  --status-notification-background-color: transparent;
+
+  inline-size: $sz-6;
+  block-size: $sz-6;
+  border-radius: $br-circle;
+  margin-inline-end: var(--sp-xs);
+  flex-shrink: 0;
+  background-color: var(--status-notification-background-color);
+
+  &.pending-status,
+  &.saving-status,
+  &.retrying-status {
+    --status-notification-background-color: var(--color-accent-warning);
+  }
+
+  &.saved-status {
+    --status-notification-background-color: var(--color-accent-success);
+
+    animation: jump 0.3s ease-out;
+  }
+
+  &.error-status {
+    --status-notification-background-color: var(--color-foreground-error);
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
