@@ -24,3 +24,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | vaultwarden | https://github.com/dani-garcia/vaultwarden | `b0048fa27ff2` | 2026-11-15 | AGPL-3.0 | none |
 | n8n | https://github.com/n8n-io/n8n | `51f8cf624992` | 2026-11-15 | NOASSERTION | none |
 | open-generative-ai | https://github.com/Anil-matcha/Open-Generative-AI | `fd7dd9207aac` | 2026-11-15 | MIT | none |
+| openwhispr | https://github.com/OpenWhispr/openwhispr | `f178fa9fc359` | 2026-11-15 | MIT | none |
