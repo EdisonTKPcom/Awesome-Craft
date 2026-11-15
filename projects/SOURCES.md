@@ -28,3 +28,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | voicestudio | https://github.com/debpalash/VoiceStudio | `2c1f3f7784be` | 2026-11-15 | AGPL-3.0 | none |
 | rocket.chat | https://github.com/RocketChat/Rocket.Chat | `b096d6a2fbda` | 2026-11-15 | NOASSERTION | none |
 | server | https://github.com/nextcloud/server | `a3081d0a54e5` | 2026-11-15 | AGPL-3.0 | none |
+| invoiceninja | https://github.com/invoiceninja/invoiceninja | `15ea35ea63f3` | 2026-11-15 | NOASSERTION |  secret-scan-removed: openapi/components/schemas/company.yaml openapi/api-docs.yaml  |
