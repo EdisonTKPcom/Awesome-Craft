@@ -1,0 +1,7 @@
+# Vendored projects
+
+Snapshots of each listed project's default branch, without git history, so this repo keeps one record of them. Refresh with `scripts/sync-projects.sh`. Each project keeps its own licence; nested GitHub workflows are renamed to `.github/workflows-upstream` so they don't run here. Files over 95 MB are skipped.
+
+| Project | Upstream | Commit | Snapshot | Licence | Skipped files |
+|---|---|---|---|---|---|
+| twenty | https://github.com/twentyhq/twenty | `1dd1c249ad21` | 2026-11-15 | NOASSERTION | none |
