@@ -32,6 +32,8 @@ Paid SaaS bills add up fast. Every project here can be self-hosted, and each ent
 - [Finance](#finance)
 - [Automation](#automation)
 - [AI, Voice and Media](#ai-voice-and-media)
+- [Related lists](#related-lists)
+- [Star history](#star-history)
 
 ## Dashboard
 
@@ -46,7 +48,9 @@ Paid SaaS bills add up fast. Every project here can be self-hosted, and each ent
 </tr>
 </table>
 
-Stats snapshot taken on 2026-11-15 from the GitHub API. Star badges next to each entry update live.
+**FACT** (snapshot taken 2026-11-15, GitHub API): 25 listed projects, all of them on GitHub with public repository statistics.
+
+**ESTIMATE**: 1.16M combined GitHub stars and 206.8k combined forks, summed from those API counts on the snapshot date. Live star badges next to each entry may differ.
 
 ### 🏆 Leaderboard
 
@@ -207,6 +211,28 @@ pie showData
 - [Open Generative AI](https://github.com/Anil-matcha/Open-Generative-AI) - AI image and video generation. Self-described as uncensored, so not for client-facing work, an alternative to Higgsfield. ![Stars](https://img.shields.io/github/stars/Anil-matcha/Open-Generative-AI?style=flat-square&label=%E2%AD%90)
 - [OpenWhispr](https://github.com/OpenWhispr/openwhispr) - Voice-to-text dictation, an alternative to Wispr Flow. ![Stars](https://img.shields.io/github/stars/OpenWhispr/openwhispr?style=flat-square&label=%E2%AD%90)
 - [VoiceStudio](https://github.com/debpalash/VoiceStudio) - Local voice cloning and dubbing, an alternative to ElevenLabs. ![Stars](https://img.shields.io/github/stars/debpalash/VoiceStudio?style=flat-square&label=%E2%AD%90)
+
+## Related lists
+
+Other lists in the Awesome Craft series:
+
+- [Awesome Craft Agents](https://github.com/EdisonTKPcom/Awesome-Craft-Agents) - A curated list of open-source chat apps, coding agents, self-hosted agent bots, workflow automation and image-generation UIs.
+- [Awesome Craft AI](https://github.com/EdisonTKPcom/Awesome-Craft-AI) - A curated list of open-source, self-hostable AI runtimes, servers, Hugging Face libraries and related infrastructure.
+- [Awesome Craft BSC](https://github.com/EdisonTKPcom/Awesome-Craft-BSC) - A curated list of verified open-source clients, SDKs, dev tools and protocol code for BNB Smart Chain and opBNB.
+- [Awesome Craft CUDA](https://github.com/EdisonTKPcom/Awesome-Craft-CUDA) - A curated list of open-source CUDA learning material, kernel libraries, tooling and portability projects.
+- [Awesome Craft DeepSeek](https://github.com/EdisonTKPcom/Awesome-Craft-DeepSeek) - A curated list of official DeepSeek repositories and open-source harnesses, serving engines, eval tools and fine-tuning stacks that work with DeepSeek models.
+- [Awesome Craft DevOps](https://github.com/EdisonTKPcom/Awesome-Craft-DevOps) - A curated list of open-source, self-hostable alternatives to popular DevOps and hosting SaaS tools.
+- [Awesome Craft Ethereum](https://github.com/EdisonTKPcom/Awesome-Craft-Ethereum) - A curated list of verified open-source Ethereum clients, SDKs, dev frameworks, wallets and security tools.
+- [Awesome Craft EV](https://github.com/EdisonTKPcom/Awesome-Craft-EV) - A curated list of open-source software and hardware for electric vehicles and charging.
+- [Awesome Craft Hardware](https://github.com/EdisonTKPcom/Awesome-Craft-Hardware) - A curated list of open-source tools for PCB, FPGA, ASIC and chip design.
+- [Awesome Craft Hyperliquid](https://github.com/EdisonTKPcom/Awesome-Craft-Hyperliquid) - A curated list of verified open-source SDKs, node tools, analytics and community libraries for the Hyperliquid ecosystem.
+- [Awesome Craft Malaysia](https://github.com/EdisonTKPcom/Awesome-Craft-Malaysia) - A curated list of open-source tools useful to Malaysian SMEs, with verified MyInvois support called out separately.
+- [Awesome Craft Solana](https://github.com/EdisonTKPcom/Awesome-Craft-Solana) - A curated list of verified open-source Solana clients, SDKs, frameworks, explorers and program libraries.
+- [Awesome Craft Web3](https://github.com/EdisonTKPcom/Awesome-Craft-Web3) - A curated list of open-source DEX protocol code, self-custody software, indexers, frameworks and Blockchain infrastructure.
+
+## Star history
+
+[![Star History Chart](https://api.star-history.com/chart?repos=EdisonTKPcom/Awesome-Craft&amp;type=Date)](https://www.star-history.com/#EdisonTKPcom/Awesome-Craft&Date)
 
 ## Contributing
 
