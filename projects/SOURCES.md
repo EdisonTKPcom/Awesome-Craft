@@ -15,3 +15,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | posthog | https://github.com/PostHog/posthog | `27e9e3fb2414` | 2026-11-15 | NOASSERTION | none |
 | umami | https://github.com/umami-software/umami | `b18d5144dfe7` | 2026-11-15 | MIT | none |
 | listmonk | https://github.com/knadh/listmonk | `e735e0b23421` | 2026-11-15 | AGPL-3.0 | none |
+| openseo | https://github.com/TahaHachana/OpenSEO | `670fd119e83c` | 2026-11-15 | none | none |
