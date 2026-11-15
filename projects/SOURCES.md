@@ -5,3 +5,4 @@ Snapshots of each listed project's default branch, without git history, so this 
 | Project | Upstream | Commit | Snapshot | Licence | Skipped files |
 |---|---|---|---|---|---|
 | twenty | https://github.com/twentyhq/twenty | `1dd1c249ad21` | 2026-11-15 | NOASSERTION | none |
+| openproject | https://github.com/opf/openproject | `f9a728e3035b` | 2026-11-15 | GPL-3.0 | none |
